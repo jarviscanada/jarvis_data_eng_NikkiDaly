@@ -7,7 +7,7 @@ db_password=$3
 container="jrvs_psql"
 
 #if docker contaner is not running, start docker container
-systemctl status docker || systemctl start docker
+sudo systemctl status docker || systemctl start docker
 
 if [ "$command" == "create" ]; then
   # check if container is already created
