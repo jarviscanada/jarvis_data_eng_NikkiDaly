@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_info
 CREATE TABLE IF NOT EXISTS PUBLIC.host_usage
 (
     "timestamp"         TIMESTAMP NOT NULL,
-    host_id             SERIAL NOT NULL,
+    host_id             SERIAL NOT NULL REFERENCES host_info(id) ON DELETE CASCADE,
     memory_free         INT NOT NULL,
     cpu_idle            INT NOT NULL,
     cpu_kernel          INT NOT NULL,
