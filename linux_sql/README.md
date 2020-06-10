@@ -1,5 +1,5 @@
 # Linux Cluster Monitoring Agent
-##Introduction
+## Introduction
 The Cluster Monitoring Agent is an internal tool used by the Jarvis Linux Cluster and 
 Administration team to gather hardware specifications data of nodes within the linux 
 cluster as well as monitor resource usage in real time. The project includes a bash script 
@@ -9,7 +9,7 @@ the relative information about the clusters and populated it inside of this PSQL
 The project also include SQL queries that will help the business team answer questions for 
 resource planning.    
 
-##Quick Start
+## Quick Start
 ```shell script
 # Create a psql docker container with the given username and password.
 ./scripts/psql_docker.sh create db_username db_password
@@ -29,11 +29,11 @@ crontab -e
 # Add the line to the open editor to collect the usage data every minute 
 * * * * * bash [full/path/to]/linux_sql/scripts/host_usage.sh [psql host] [port] host_agent [db_username] [db_password] &> /tmp/host_usage.log
 ```
-##Architecture Diagram
+## Architecture Diagram
 
 ![](assets/architecture.png)
 
-##Database Modeling
+## Database Modeling
 The host_info table holds information on the hardware specifications for the node on which the script was run. The schema is as follows: 
 
 Field | Description 
@@ -60,7 +60,7 @@ cpu_kernel | The percentage of time the CPU is running kernel code
 disk_io | The number of disks undergoing I/O processes
 disk_available | The Available space in the disk's root directory in MB
 
-##Scripts
+## Scripts
 
 The psql_docker.sh script manages the psql docker instance. Usage:
 ```shell script
@@ -109,7 +109,7 @@ query get the average used memory in percentage over 5 mins interval for each ho
 psql -h localhost -U postgres -d host_agent -f sql/querie.sql
 ```
 
-##Improvements
+## Improvements
 * Include more queries that can gather more data for the business analysts on the resource usage
 * Complete the node failure query to find out when a node failed to write usage data to DB three 
 times in a row.
