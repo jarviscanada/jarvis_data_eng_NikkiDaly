@@ -5,8 +5,8 @@ Administration team to gather hardware specifications data of nodes within the l
 cluster as well as monitor resource usage in real time. The project includes a bash script 
 that will initialize a PSQL database within a docker container which will then be used by 
 the agent to store the data. The monitoring agent will then use two bash scripts to collect
-the relative information about the clusters and populated it inside of this PSQL database. 
-The project also include SQL queries that will help the business team answer questions for 
+the relative information about the clusters and populate it inside of this PSQL database. 
+The project also include 2 SQL queries that will help the business team answer questions for 
 resource planning.    
 
 ## Quick Start
@@ -48,7 +48,7 @@ l2_cache | The size of the L2 cache in kB
 total_mem | The total size of the memory 
 timestamp | The time when the host_info specifications were taken
 
-The host_usage table holds usage statistics for the node on which the script was run. The schema is ass follows: 
+The host_usage table holds usage statistics for the node on which the script was run. The schema is as follows: 
 
 Field | Description 
 ------|------------
