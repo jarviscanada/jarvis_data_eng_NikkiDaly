@@ -2,8 +2,6 @@ package ca.jrvs.apps.practice;
 
 import static java.lang.Math.sqrt;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -28,7 +26,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
 
   @Override
   public Stream<String> filter(Stream<String> stringStream, String pattern) {
-    Stream<String> filteredStream = stringStream.filter(str->!str.contains(pattern));
+    Stream<String> filteredStream = stringStream.filter(str -> !str.contains(pattern));
     return filteredStream;
   }
 
@@ -52,7 +50,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
 
   @Override
   public IntStream createIntStream(int start, int stop) {
-    IntStream intStream = IntStream.range(start, stop+1);
+    IntStream intStream = IntStream.range(start, stop + 1);
     return intStream;
   }
 
@@ -65,32 +63,32 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
 
   @Override
   public IntStream getOdd(IntStream intStream) {
-    IntStream oddIntegerStream = intStream.filter(num -> num%2 == 1);
+    IntStream oddIntegerStream = intStream.filter(num -> num % 2 == 1);
     return oddIntegerStream;
   }
 
   @Override
   public Consumer<String> getLambdaPrinter(String prefix, String suffix) {
-    Consumer<String> stringConsumer = (str)->System.out.println(prefix + str + suffix);
+    Consumer<String> stringConsumer = (str) -> System.out.println(prefix + str + suffix);
     return stringConsumer;
   }
 
   @Override
   public void printMessages(String[] messages, Consumer<String> printer) {
-    for (String msg: messages) {
+    for (String msg : messages) {
       printer.accept(msg);
     }
   }
 
   @Override
   public void printOdd(IntStream intStream, Consumer<String> printer) {
-    IntStream filteredStream = intStream.filter(num -> num%2 == 1);
+    IntStream filteredStream = intStream.filter(num -> num % 2 == 1);
     filteredStream.forEach(num -> printer.accept(String.valueOf(num)));
   }
 
   @Override
   public Stream<Integer> flatNestedInt(Stream<List<Integer>> ints) {
-    Stream<Integer> integerStream = ints.flatMap(num -> num.stream()).map(num -> num*num);
+    Stream<Integer> integerStream = ints.flatMap(num -> num.stream()).map(num -> num * num);
     return integerStream;
   }
 }
