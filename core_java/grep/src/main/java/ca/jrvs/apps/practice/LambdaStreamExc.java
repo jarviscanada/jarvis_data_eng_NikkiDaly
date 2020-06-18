@@ -105,7 +105,7 @@ public interface LambdaStreamExc {
    * Please use 'getLambdaPrinter'method
    *
    * e.g.
-   * String[] messages = {'a', 'b', 'c'};
+   * c
    * lse.printMessages(messages, lse.getLambdaPrinter("msg:", "!");
    *
    * sout:

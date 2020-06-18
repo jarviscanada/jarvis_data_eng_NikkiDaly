@@ -2,7 +2,15 @@ package ca.jrvs.apps.practice;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.junit.After;
 import org.junit.Before;
@@ -19,20 +27,23 @@ public class LambdaStreamExcImpTest {
 
   @After
   public void tearDown() throws Exception {
+
   }
 
   @Test
   public void createStrStream() {
     System.out.println("Test case: test createStrStream method");
-    Stream<String> stringStream = lambdaStreamExcImp.createStrStream("a", "b", "c");
-    assertEquals("The expected output is abc", "abc", stringStream.collect(Collectors.joining("")));
+    Stream<String> testStream = lambdaStreamExcImp.createStrStream("a", "b", "c");
+    String str = testStream.collect(Collectors.joining(""));
+    assertEquals("The expected output is abc", "abc", str);
   }
 
   @Test
   public void toUpperCase() {
     System.out.println("Test case: test toUpperCase method");
-    Stream<String> stringStream = lambdaStreamExcImp.toUpperCase("a", "b", "c");
-    assertEquals("The expected output is ABC", "ABC", stringStream.collect(Collectors.joining("")));
+    Stream<String> testStream = lambdaStreamExcImp.toUpperCase("a", "b", "c");
+    String str = testStream.collect(Collectors.joining(""));
+    assertEquals("The expected output is ABC", "ABC", str);
   }
 
   @Test
@@ -40,37 +51,57 @@ public class LambdaStreamExcImpTest {
     System.out.println("Test case: test filter method");
     Stream<String> testStream = lambdaStreamExcImp.createStrStream("a", "ab", "c", "ca");
     String pattern = "a";
-    
+    String str = lambdaStreamExcImp.filter(testStream, pattern).collect(Collectors.joining(""));
+    assertEquals("The expected outcome is c", "c", str);
   }
 
   @Test
   public void createIntStream() {
     System.out.println("Test case: test createIntStream method");
+    int[] arr = {1, 2, 3};
+    IntStream testStream = lambdaStreamExcImp.createIntStream(arr);
+    assertEquals("The expected outcome will sum to 6", 6, testStream.sum());
   }
 
   @Test
   public void toList() {
     System.out.println("Test case: test toList method");
+    Stream<String> testStream = lambdaStreamExcImp.createStrStream("a" ,"b", "c");
+    List<String> testList = Arrays.asList("a", "b", "c");
+    assertEquals("The expected outcome is abc", testList, lambdaStreamExcImp.toList(testStream));
   }
 
   @Test
   public void squareRootIntStream() {
     System.out.println("Test case: test sqaureRootIntStream method");
+    int[] arr = {1, 4, 9};
+    IntStream intStream = lambdaStreamExcImp.createIntStream(arr);
+    double sum = lambdaStreamExcImp.squareRootIntStream(intStream).sum();
+    assertEquals("The expected outcome will sum to 6.0", 6.0, sum, 0);
   }
 
   @Test
   public void getOdd() {
     System.out.println("Test case: test getOdd method");
+    IntStream intStream = lambdaStreamExcImp.createIntStream(1, 5);
+    assertEquals("The expected outcome will sum to 9", 9, lambdaStreamExcImp.getOdd(intStream).sum());
   }
 
   @Test
   public void getLambdaPrinter() {
     System.out.println("Test case: test getLambdaPrinter method");
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    //PrintStream ps = System.out;
+    System.setOut(new PrintStream(out));
+    Consumer<String> printer = lambdaStreamExcImp.getLambdaPrinter("1:", ":2");
+    printer.accept("Hello");
+    assertEquals("The expected outcome should be 1:Hello:2", "1:Hello:2", out.toString());
   }
 
   @Test
   public void printMessages() {
-    System.out.println("Test case: test printMEssages method");
+    System.out.println("Test case: test printMessages method");
+
   }
 
   @Test
@@ -81,5 +112,10 @@ public class LambdaStreamExcImpTest {
   @Test
   public void flatNestedInt() {
     System.out.println("Test case: test flatNestedInt method");
+    List<Integer> list1 = Arrays.asList(1, 2, 3);
+    List<Integer> list2 = Arrays.asList(4, 5, 6);
+    Stream<List<Integer>> testStream = Arrays.asList(list1, list2).stream();
+    int sum = lambdaStreamExcImp.flatNestedInt(testStream).reduce(0, Integer::sum);
+    assertEquals("The expected outcome should sum to 91", 91, sum);
   }
 }
