@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -73,11 +74,11 @@ public class LambdaStreamExcImpTest {
 
   @Test
   public void squareRootIntStream() {
-    System.out.println("Test case: test sqaureRootIntStream method");
+    System.out.println("Test case: test squareRootIntStream method");
     int[] arr = {1, 4, 9};
     IntStream intStream = lambdaStreamExcImp.createIntStream(arr);
-    double sum = lambdaStreamExcImp.squareRootIntStream(intStream).sum();
-    assertEquals("The expected outcome will sum to 6.0", 6.0, sum, 0);
+    DoubleStream doubleStream = lambdaStreamExcImp.squareRootIntStream(intStream);
+    assertEquals("The expected outcome will sum to 6.0", 6.0, doubleStream.sum(), 0.0);
   }
 
   @Test
@@ -91,22 +92,34 @@ public class LambdaStreamExcImpTest {
   public void getLambdaPrinter() {
     System.out.println("Test case: test getLambdaPrinter method");
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    //PrintStream ps = System.out;
     System.setOut(new PrintStream(out));
     Consumer<String> printer = lambdaStreamExcImp.getLambdaPrinter("1:", ":2");
     printer.accept("Hello");
-    assertEquals("The expected outcome should be 1:Hello:2", "1:Hello:2", out.toString());
+    assertEquals("The expected outcome should be 1:Hello:2", "1:Hello:2\n", out.toString());
   }
 
   @Test
   public void printMessages() {
     System.out.println("Test case: test printMessages method");
-
+    String[] testArr = {"1", "2", "3"};
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(out));
+    Consumer<String> printer = lambdaStreamExcImp.getLambdaPrinter("*", "*");
+    lambdaStreamExcImp.printMessages(testArr, printer);
+    assertEquals("The expected outcome is *1*\n*2*\n*3*\n", "*1*\n*2*\n*3*\n", out.toString());
   }
 
   @Test
   public void printOdd() {
     System.out.println("Test case: test printOdd method");
+    int[] testArr = {1, 2, 3};
+    IntStream testStream = lambdaStreamExcImp.createIntStream(testArr);
+    Consumer<String> printer = lambdaStreamExcImp.getLambdaPrinter("*", "*");
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(out));
+    lambdaStreamExcImp.printOdd(testStream, printer);
+    assertEquals("The expected outcome is *1*\n*3*\n", "*1*\n*3*\n", out.toString());
+
   }
 
   @Test
