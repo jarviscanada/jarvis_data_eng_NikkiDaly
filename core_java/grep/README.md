@@ -1,4 +1,4 @@
-#Java Grep Application
+# Java Grep Application
 
 ## Introduction
 This project is a Java implementation of the `grep` command line utility found on Linux 
