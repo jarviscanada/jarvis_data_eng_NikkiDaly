@@ -24,7 +24,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
     try {
       javaGrepLambdaImp.process();
     } catch (Exception ex) {
-      ex.printStackTrace();
+      javaGrepLambdaImp.logger.error("Failed to start the process", ex);
     }
   }
 
@@ -44,7 +44,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
       Stream<String> stream = Files.lines(inputFile.toPath());
       lines = stream.collect(Collectors.toList());
     } catch (Exception ex) {
-      this.logger.error("ERROR: Failed to read file", ex);
+      logger.error("ERROR: Failed to read file", ex);
     }
     return lines;
   }
@@ -62,7 +62,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
       Stream<Path> fileStream = Files.walk(Paths.get(rootDir));
       fileStream.filter(Files::isRegularFile).forEach(file -> files.add(file.toFile()));
     } catch (Exception ex) {
-      this.logger.error("ERROR: Failed to retrieve file");
+      logger.error("ERROR: Failed to retrieve file");
     }
     return files;
   }
