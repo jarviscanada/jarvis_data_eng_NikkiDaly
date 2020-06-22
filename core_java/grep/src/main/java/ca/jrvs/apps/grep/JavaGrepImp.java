@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,14 +54,14 @@ public class JavaGrepImp implements JavaGrep {
   @Override
   public void process() throws IOException {
     List<String> matchedLines = new ArrayList<String>();
-    for (File file : this.listFiles(this.getRootPath())) {
-      for (String line : this.readLines(file)) {
+    for (File file : listFiles(getRootPath())) {
+      for (String line : readLines(file)) {
         if (containsPattern(line)) {
           matchedLines.add(line);
         }
       }
     }
-    this.writeToFile(matchedLines);
+    writeToFile(matchedLines);
   }
 
   /**
@@ -107,7 +108,7 @@ public class JavaGrepImp implements JavaGrep {
         lines.add(line);
       }
     } catch (Exception ex) {
-      this.logger.error("ERROR: Failed to create BufferedReader", ex);
+      logger.error("ERROR: Failed to create BufferedReader", ex);
     }
     return lines;
   }
@@ -120,7 +121,8 @@ public class JavaGrepImp implements JavaGrep {
    */
   @Override
   public boolean containsPattern(String line) {
-    Pattern pattern = Pattern.compile(this.getRegex());
+    Pattern pattern = Pattern.compile(
+        getRegex());
     Matcher matcher = pattern.matcher(line);
     boolean match = matcher.matches();
     return match;
@@ -134,7 +136,7 @@ public class JavaGrepImp implements JavaGrep {
    */
   @Override
   public void writeToFile(List<String> lines) throws IOException {
-    File outputFile = new File(this.getOutFile());
+    File outputFile = new File(getOutFile());
     FileOutputStream outStream = new FileOutputStream(outputFile);
     try {
       BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outStream));
@@ -145,13 +147,13 @@ public class JavaGrepImp implements JavaGrep {
       bufferedWriter.flush();
       bufferedWriter.close();
     } catch (Exception ex) {
-      this.logger.error("ERROR: The write to outFile failed", ex);
+      logger.error("ERROR: The write to outFile failed", ex);
     }
   }
 
   @Override
   public String getRootPath() {
-    return this.rootDir;
+    return rootDir;
   }
 
   @Override
@@ -161,7 +163,7 @@ public class JavaGrepImp implements JavaGrep {
 
   @Override
   public String getRegex() {
-    return this.regex;
+    return regex;
   }
 
   @Override
@@ -171,7 +173,7 @@ public class JavaGrepImp implements JavaGrep {
 
   @Override
   public String getOutFile() {
-    return this.outFile;
+    return outFile;
   }
 
   @Override
