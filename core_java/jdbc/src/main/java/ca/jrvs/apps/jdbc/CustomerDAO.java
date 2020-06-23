@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CustomerDAO extends DataAccessObject<Customer> {
+
   private static final String INSERT = "INSERT INTO customer (first_name, last_name, "
       + "email, phone, address, city, state, zipcode) VALUES(?,?,?,?,?,?,?,?)";
 
@@ -32,7 +33,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
   @Override
   public Customer findById(long id) {
     Customer customer = new Customer();
-    try(PreparedStatement statement = this.connection.prepareStatement(GET_ONE)) {
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_ONE)) {
       statement.setLong(1, id);
       ResultSet resultSet = statement.executeQuery();
       while (resultSet.next()) {
@@ -61,12 +62,12 @@ public class CustomerDAO extends DataAccessObject<Customer> {
   @Override
   public Customer update(Customer dto) {
     Customer customer = null;
-    try{
+    try {
       this.connection.setAutoCommit(false);
     } catch (SQLException ex) {
       logger.error("ERROR: Failed to set auto commit.", ex);
     }
-    try(PreparedStatement statement = this.connection.prepareStatement(UPDATE)) {
+    try (PreparedStatement statement = this.connection.prepareStatement(UPDATE)) {
       statement.setString(1, dto.getFirstName());
       statement.setString(2, dto.getLastName());
       statement.setString(3, dto.getEmail());
@@ -88,7 +89,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
   @Override
   public Customer create(Customer dto) {
-    try(PreparedStatement statement = this.connection.prepareStatement(INSERT);) {
+    try (PreparedStatement statement = this.connection.prepareStatement(INSERT);) {
       statement.setString(1, dto.getFirstName());
       statement.setString(2, dto.getLastName());
       statement.setString(3, dto.getEmail());
@@ -100,7 +101,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       statement.execute();
       int id = this.getLastVal(CUSTOMER_SEQUENCE);
       return this.findById(id);
-    } catch(SQLException ex) {
+    } catch (SQLException ex) {
       try {
         this.connection.rollback();
       } catch (SQLException e) {
@@ -114,7 +115,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
   @Override
   public void delete(long id) {
-    try(PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+    try (PreparedStatement statement = this.connection.prepareStatement(DELETE);) {
       statement.setLong(1, id);
       statement.execute();
     } catch (SQLException ex) {

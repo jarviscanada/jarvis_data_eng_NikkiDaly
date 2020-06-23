@@ -1,7 +1,6 @@
 package ca.jrvs.apps.jdbc;
 
 import ca.jrvs.apps.jdbc.util.DataAccessObject;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +31,7 @@ public class OrderDAO extends DataAccessObject<Order> {
   @Override
   public Order findById(long id) {
     Order order = new Order();
-    try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID)) {
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID)) {
       statement.setLong(1, id);
       ResultSet resultSet = statement.executeQuery();
       long orderId = 0;
@@ -90,14 +88,14 @@ public class OrderDAO extends DataAccessObject<Order> {
 
   public List<Order> getOrdersForCustomer(long customerId) {
     List<Order> orders = new ArrayList<>();
-    try(PreparedStatement statement = this.connection.prepareStatement(GET_FOR_CUST)) {
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_FOR_CUST)) {
       statement.setLong(1, customerId);
       ResultSet resultSet = statement.executeQuery();
       long orderId = 0;
       Order order = null;
-      while(resultSet.next()) {
+      while (resultSet.next()) {
         long localOrderId = resultSet.getLong(4);
-        if(orderId != localOrderId) {
+        if (orderId != localOrderId) {
           order = new Order();
           orders.add(order);
           order.setId(localOrderId);

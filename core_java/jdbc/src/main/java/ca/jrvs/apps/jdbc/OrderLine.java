@@ -1,6 +1,7 @@
 package ca.jrvs.apps.jdbc;
 
 public class OrderLine {
+
   private int quantity;
   private String productCode;
   private String productName;
