@@ -1,9 +1,12 @@
 package ca.jrvs.apps.jdbc;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import jdk.nashorn.internal.scripts.JD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +21,8 @@ public class JDBCExecuter {
     try {
       Connection connection = dbcm.getConnection();
       OrderDAO orderDAO = new OrderDAO(connection);
-      Order order = orderDAO.findById(1000);
-      System.out.println(order);
-
+      List<Order> orders = orderDAO.getOrdersForCustomer(789);
+      orders.forEach(System.out::println);
     } catch(SQLException ex){
       JDBCExecuter.logger.error("ERROR: Could not perform SQL query", ex);
     }
