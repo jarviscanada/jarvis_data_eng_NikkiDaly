@@ -1,5 +1,8 @@
 package ca.jrvs.practice.dataStructure.map;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -23,15 +26,13 @@ public class HashJMap<K, V> implements JMap<K, V> {
    */
   final float loadFactor;
   /**
-   * The table, initialized on first use, and resized as
-   * necessary. When allocated, length is always a power of two.
-   * (We also tolerate length zero in some operations to allow
-   * bootstrapping mechanics that are currently not needed.)
+   * The table, initialized on first use, and resized as necessary. When allocated, length is always
+   * a power of two. (We also tolerate length zero in some operations to allow bootstrapping
+   * mechanics that are currently not needed.)
    */
   Node<K, V>[] table;
   /**
-   * Holds cached entrySet(). Note that AbstractMap fields are used
-   * for keySet() and values().
+   * Holds cached entrySet(). Note that AbstractMap fields are used for keySet() and values().
    */
   Set<Map.Entry<K, V>> entrySet;
   /**
@@ -39,8 +40,8 @@ public class HashJMap<K, V> implements JMap<K, V> {
    */
   int size;
   /**
-   * The next size value at which to resize (capacity * load factor).
-   * Use #capacity() to compute capacity
+   * The next size value at which to resize (capacity * load factor). Use #capacity() to compute
+   * capacity
    *
    * @serial
    */
@@ -55,62 +56,104 @@ public class HashJMap<K, V> implements JMap<K, V> {
   }
 
   /**
-   * Constructs an empty <tt>HashMap</tt> with the specified initial
-   * capacity and load factor.
+   * Constructs an empty <tt>HashMap</tt> with the specified initial capacity and load factor.
    *
-   * @param  initialCapacity the initial capacity
-   * @param  loadFactor      the load factor
-   * @throws IllegalArgumentException if the initial capacity is negative
-   *         or the load factor is nonpositive
+   * @param initialCapacity the initial capacity
+   * @param loadFactor      the load factor
+   * @throws IllegalArgumentException if the initial capacity is negative or the load factor is
+   *                                  nonpositive
    */
   public HashJMap(int initialCapacity, float loadFactor) {
     //validate inputs
-    //your code goes here
+    if (initialCapacity < 0) {
+      throw new IllegalArgumentException("The initialCapacity cannot be less than 0");
+    }
+
+    if (loadFactor <= 0) {
+      throw new IllegalArgumentException("the loadFactor cannot be non positive");
+    }
 
     this.loadFactor = loadFactor;
-    //threshold = capacity *
     this.threshold = (int) ((float) initialCapacity * loadFactor);
   }
 
   /**
-   * Associates the specified value with the specified key in this map
-   * (optional operation).  If the map previously contained a mapping for
-   * the key, the old value is replaced by the specified value.  (A map
+   * Associates the specified value with the specified key in this map (optional operation).  If the
+   * map previously contained a mapping for the key, the old value is replaced by the specified
+   * value.  (A map
    * <tt>m</tt> is said to contain a mapping for a key <tt>k</tt> if and only
    * if {@link #containsKey(Object) m.containsKey(k)} would return
    * <tt>true</tt>.)
-   *
+   * <p>
    * Key cannot be null
    *
-   * @param key key with which the specified value is to be associated
+   * @param key   key with which the specified value is to be associated
    * @param value value to be associated with the specified key
    * @return the previous value associated with <tt>key</tt>, or
-   *         <tt>null</tt> if there was no mapping for <tt>key</tt>.
-   *         (A <tt>null</tt> return can also indicate that the map
-   *         previously associated <tt>null</tt> with <tt>key</tt>,
-   *         if the implementation supports <tt>null</tt> values.)
-   * @throws NullPointerException if the specified key or value is null
-   *         and this map does not permit null keys or values
+   * <tt>null</tt> if there was no mapping for <tt>key</tt>.
+   * (A <tt>null</tt> return can also indicate that the map previously associated <tt>null</tt> with
+   * <tt>key</tt>, if the implementation supports <tt>null</tt> values.)
+   * @throws NullPointerException if the specified key or value is null and this map does not permit
+   *                              null keys or values
    */
   @Override
   public V put(K key, V value) {
     //validate key == null
-
+    if (key == null) {
+      throw new NullPointerException("The key cannot be null");
+    }
     //init this.table
+    if (table == null || table.length == 0) {
+      table = (Node<K, V>[]) new Node[DEFAULT_INITIAL_CAPACITY];
+    }
 
     //using key.hashcode to compute the bucket location (this.table)
     //e.g. key.hashcode % (table.length -1)
+    int bucketIndex = key.hashCode() % (table.length - 1);
 
     //store KV in the table[index] (as Node<K,V>)
     //if key already exist (use #containsKey) update the value instead
     //if table[index] is taken, link the KV pair next to the exiting KV pair
+    Node<K, V> node = new Node<K, V>(key.hashCode(), key, value, null);
+    V oldValue = null;
+    if (containsKey(key)) {
+      Node<K, V> currNode = table[bucketIndex];
+      while (currNode.getKey().equals(key)) {
+        currNode = currNode.next;
+      }
+      oldValue = currNode.getValue();
+      currNode.setValue(value);
+    } else if (table[bucketIndex] != null) {
+      Node<K, V> currNode = table[bucketIndex];
+      while (currNode.next != null) {
+        currNode = currNode.next;
+      }
+      currNode = node;
+      size++;
+    } else {
+      table[bucketIndex] = node;
+      size++;
+    }
 
     //add KV pair to this.entrySet
+    if (entrySet == null) {
+      entrySet = new HashSet<Entry<K, V>>();
+    }
+    entrySet.add(node);
 
     //if this.size is greater than threshold, double table and re-hash
     //(iterate through this.entrySet for re-hashing )
+    if (size > threshold) {
+      table = (Node<K, V>[]) new Object[table.length * 2];
+      Iterator iterator = entrySet.iterator();
+      while (iterator.hasNext()) {
+        Object nextNode = iterator.next();
+        entrySet.remove(nextNode);
+        put((K) ((Entry) nextNode).getKey(), (V) ((Entry) nextNode).getValue());
+      }
+    }
 
-    return null;
+    return oldValue;
   }
 
   final int capacity() {
@@ -120,77 +163,131 @@ public class HashJMap<K, V> implements JMap<K, V> {
   }
 
   /**
-   * Returns <tt>true</tt> if this map contains a mapping for the specified
-   * key.  More formally, returns <tt>true</tt> if and only if
-   * this map contains a mapping for a key <tt>k</tt> such that
+   * Returns <tt>true</tt> if this map contains a mapping for the specified key.  More formally,
+   * returns <tt>true</tt> if and only if this map contains a mapping for a key <tt>k</tt> such
+   * that
    * <tt>(key==null ? k==null : key.equals(k))</tt>.  (There can be
    * at most one such mapping.)
    *
    * @param key key whose presence in this map is to be tested
    * @return <tt>true</tt> if this map contains a mapping for the specified
-   *         key
-   * @throws NullPointerException if the specified key is null and this map
-   *         does not permit null keys
-   * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
+   * key
+   * @throws NullPointerException if the specified key is null and this map does not permit null
+   *                              keys (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
    */
   @Override
   public boolean containsKey(Object key) {
+
     //validate key == null
+    if (key == null) {
+      throw new NullPointerException("The key is null");
+    }
 
     //using key.hashcode to compute the bucket location (this.table)
     //e.g. key.hashcode % (table.length -1)
+    int bucketIndex = key.hashCode() % (table.length - 1);
 
     //if there is more than one Node<K,V> in the bucket,
     //traverse through the linkedList and use `equals` to find the key
-
+    if (table[bucketIndex] != null) {
+      Node<K, V> node = table[bucketIndex];
+      if (node.getKey().equals(key)) {
+        return true;
+      }
+      while (node.next != null) {
+        node = node.next;
+        if (node.getKey().equals(key)) {
+          return true;
+        }
+      }
+    }
     return false;
   }
 
 
   /**
-   * Returns the value to which the specified key is mapped,
-   * or {@code null} if this map contains no mapping for the key.
+   * Returns the value to which the specified key is mapped, or {@code null} if this map contains no
+   * mapping for the key.
    *
    * @param key the key whose associated value is to be returned
-   * @return the value to which the specified key is mapped, or
-   *         {@code null} if this map contains no mapping for the key
-   * @throws NullPointerException if the specified key is null and this map
-   *         does not permit null keys
-   * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
+   * @return the value to which the specified key is mapped, or {@code null} if this map contains no
+   * mapping for the key
+   * @throws NullPointerException if the specified key is null and this map does not permit null
+   *                              keys (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
    */
   @Override
   public V get(Object key) {
-    //similar to #containsKey
+    //validate key == null
+    if (key == null) {
+      throw new NullPointerException("The key is null");
+    }
+
+    int bucketIndex = key.hashCode() % (table.length - 1);
+
+    if (table[bucketIndex] != null) {
+      Node<K, V> node = table[bucketIndex];
+      if (node.getKey().equals(key)) {
+        return node.getValue();
+      }
+      while (node.next != null) {
+        node = node.next;
+        if (node.getKey().equals(key)) {
+          return node.getValue();
+        }
+      }
+    }
     return null;
   }
 
   /**
-   * Returns the number of key-value mappings in this map.  If the
-   * map contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
+   * Returns the number of key-value mappings in this map.  If the map contains more than
+   * <tt>Integer.MAX_VALUE</tt> elements, returns
    * <tt>Integer.MAX_VALUE</tt>.
    *
    * @return the number of key-value mappings in this map
    */
   @Override
   public int size() {
-    return 0;
+    return (size > Integer.MAX_VALUE) ? Integer.MAX_VALUE : size;
   }
 
   /**
-   * Returns a {@link Set} view of the mappings contained in this map.
-   * The set is backed by the map, so changes to the map are
-   * reflected in the set, and vice-versa.
+   * Returns a {@link Set} view of the mappings contained in this map. The set is backed by the map,
+   * so changes to the map are reflected in the set, and vice-versa.
    *
    * @return a set view of the mappings contained in this map
    */
   @Override
   public Set<Entry<K, V>> entrySet() {
-    return null;
+    return entrySet;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    HashJMap<?, ?> hashJMap = (HashJMap<?, ?>) o;
+    return Float.compare(hashJMap.loadFactor, loadFactor) == 0 &&
+        size == hashJMap.size &&
+        threshold == hashJMap.threshold &&
+        Arrays.equals(table, hashJMap.table) &&
+        Objects.equals(entrySet, hashJMap.entrySet);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = Objects.hash(loadFactor, entrySet, size, threshold);
+    result = 31 * result + Arrays.hashCode(table);
+    return result;
   }
 
   /**
-   * Basic hash bin node, used for most entries.  (See below for
-   * TreeNode subclass, and in LinkedHashMap for its Entry subclass.)
+   * Basic hash bin node, used for most entries.  (See below for TreeNode subclass, and in
+   * LinkedHashMap for its Entry subclass.)
    */
   static class Node<K, V> implements Map.Entry<K, V> {
 
@@ -234,10 +331,8 @@ public class HashJMap<K, V> implements JMap<K, V> {
       }
       if (o instanceof Map.Entry) {
         Map.Entry<?, ?> e = (Map.Entry<?, ?>) o;
-        if (Objects.equals(key, e.getKey()) &&
-            Objects.equals(value, e.getValue())) {
-          return true;
-        }
+        return Objects.equals(key, e.getKey()) &&
+            Objects.equals(value, e.getValue());
       }
       return false;
     }
