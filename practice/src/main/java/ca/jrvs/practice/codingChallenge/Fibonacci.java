@@ -11,7 +11,7 @@ public class Fibonacci {
    * Justification : The depth of the recursion tree would be n and the numbers of nodes in each row double each time
    */
   public int fib(int n) {
-    return (n == 1 || n == 2) ? 1 : fib(n-1)+fib(n-2);
+    return (n == 0) ? 0 : (n == 1 || n == 2) ? 1 : fib(n-1)+fib(n-2);
   }
 
   /**
@@ -23,12 +23,8 @@ public class Fibonacci {
   public int fibDynamic(int n) {
     int result;
     int[] memo = new int[n+1];
-    if (memo[n] != 0) {
-      result = memo[n];
-    }
-    result = (n == 1 || n == 2) ? 1 : fib(n-1) + fib(n-2);
+    result = (n == 0) ? 0 : (memo[n] != 0) ? memo[n] : (n == 1 || n == 2) ? 1 : fibDynamic(n-1)+fibDynamic(n-2);
     memo[n] = result;
     return result;
   }
-
 }
