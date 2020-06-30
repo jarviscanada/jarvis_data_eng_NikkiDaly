@@ -1,6 +1,9 @@
-.idea
 target/
-intellij-java-google-style.xml
-*.iml
-*.jar
 *.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
