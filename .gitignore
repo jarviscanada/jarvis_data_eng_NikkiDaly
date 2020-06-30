@@ -1,6 +1,9 @@
-.idea
-core_java/grep/target
-core_java/jdbc/target
-core_java/twitter/target
-intellij-java-google-style.xml
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
 *.iml
+.idea/
+.eclipse
