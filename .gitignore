@@ -7,4 +7,4 @@ target/
 *.iml
 .idea/
 .eclipse
-.intellij-java-google-style.xml
+intellij-java-google-style.xml
