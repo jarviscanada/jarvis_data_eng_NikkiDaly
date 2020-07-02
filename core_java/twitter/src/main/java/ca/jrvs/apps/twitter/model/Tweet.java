@@ -1,16 +1,18 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
     "created_at",
     "id",
@@ -28,7 +30,7 @@ public class Tweet {
   @JsonProperty("created_at")
   private String createdAt;
   @JsonProperty("id")
-  private Integer id;
+  private long id;
   @JsonProperty("id_str")
   private String idStr;
   @JsonProperty("text")
@@ -36,7 +38,7 @@ public class Tweet {
   @JsonProperty("entities")
   private Entities entities;
   @JsonProperty("coordinates")
-  private Object coordinates;
+  private Coordinates coordinates;
   @JsonProperty("retweet_count")
   private Integer retweetCount;
   @JsonProperty("favorite_count")
@@ -45,8 +47,6 @@ public class Tweet {
   private Boolean favorited;
   @JsonProperty("retweeted")
   private Boolean retweeted;
-  @JsonIgnore
-  private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("created_at")
   public String getCreatedAt() {
@@ -59,7 +59,7 @@ public class Tweet {
   }
 
   @JsonProperty("id")
-  public Integer getId() {
+  public long getId() {
     return id;
   }
 
@@ -99,12 +99,12 @@ public class Tweet {
   }
 
   @JsonProperty("coordinates")
-  public Object getCoordinates() {
+  public Coordinates getCoordinates() {
     return coordinates;
   }
 
   @JsonProperty("coordinates")
-  public void setCoordinates(Object coordinates) {
+  public void setCoordinates(Coordinates coordinates) {
     this.coordinates = coordinates;
   }
 
@@ -148,16 +148,6 @@ public class Tweet {
     this.retweeted = retweeted;
   }
 
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return this.additionalProperties;
-  }
-
-  @JsonAnySetter
-  public void setAdditionalProperty(String name, Object value) {
-    this.additionalProperties.put(name, value);
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -176,14 +166,13 @@ public class Tweet {
         Objects.equals(retweetCount, tweet.retweetCount) &&
         Objects.equals(favoriteCount, tweet.favoriteCount) &&
         Objects.equals(favorited, tweet.favorited) &&
-        Objects.equals(retweeted, tweet.retweeted) &&
-        Objects.equals(additionalProperties, tweet.additionalProperties);
+        Objects.equals(retweeted, tweet.retweeted);
   }
 
   @Override
   public int hashCode() {
     return Objects
         .hash(createdAt, id, idStr, text, entities, coordinates, retweetCount, favoriteCount,
-            favorited, retweeted, additionalProperties);
+            favorited, retweeted);
   }
 }

@@ -102,13 +102,13 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     URI uri;
     PercentEscaper percentEscaper = new PercentEscaper("", false);
     try {
-      String status = tweet.getText();
-      String uriString = API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + percentEscaper.escape(status);
-      uri = new URI(uriString);
+      uri = new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + percentEscaper.escape(tweet.getText()) + AMPERSAND
+          + "long" + EQUAL + (tweet.getCoordinates().getCoordinates().get(0) + AMPERSAND +
+          "lat" + EQUAL + (tweet.getCoordinates().getCoordinates().get(1))));
+      return uri;
     } catch (URISyntaxException ex) {
       throw new IllegalArgumentException("Invalid input", ex);
     }
-    return uri;
   }
 
   private Tweet parseResponseBody(HttpResponse response, int httpOk) {

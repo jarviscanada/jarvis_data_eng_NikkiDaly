@@ -1,5 +1,6 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,18 +13,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
-    "type",
-    "coordinates"
+    "coordinates",
+    "type"
 })
 public class Coordinates {
 
+  @JsonProperty("coordinates")
+  private List<Double> coordinates = null;
   @JsonProperty("type")
   private String type;
+
   @JsonProperty("coordinates")
-  private List<List<List<Double>>> coordinates = null;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+  public List<Double> getCoordinates() {
+    return coordinates;
+  }
+
+  @JsonProperty("coordinates")
+  public void setCoordinates(List<Double> coordinates) {
+    this.coordinates = coordinates;
+  }
 
   @JsonProperty("type")
   public String getType() {
@@ -35,26 +45,6 @@ public class Coordinates {
     this.type = type;
   }
 
-  @JsonProperty("coordinates")
-  public List<List<List<Double>>> getCoordinates() {
-    return coordinates;
-  }
-
-  @JsonProperty("coordinates")
-  public void setCoordinates(List<List<List<Double>>> coordinates) {
-    this.coordinates = coordinates;
-  }
-
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return this.additionalProperties;
-  }
-
-  @JsonAnySetter
-  public void setAdditionalProperty(String name, Object value) {
-    this.additionalProperties.put(name, value);
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -64,13 +54,12 @@ public class Coordinates {
       return false;
     }
     Coordinates that = (Coordinates) o;
-    return Objects.equals(type, that.type) &&
-        Objects.equals(coordinates, that.coordinates) &&
-        Objects.equals(additionalProperties, that.additionalProperties);
+    return Objects.equals(coordinates, that.coordinates) &&
+        Objects.equals(type, that.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, coordinates, additionalProperties);
+    return Objects.hash(coordinates, type);
   }
 }

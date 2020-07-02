@@ -1,5 +1,6 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
     "text",
     "indices"
@@ -22,8 +24,6 @@ public class Hashtag {
   private String text;
   @JsonProperty("indices")
   private List<Integer> indices = null;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("text")
   public String getText() {
@@ -45,16 +45,6 @@ public class Hashtag {
     this.indices = indices;
   }
 
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return this.additionalProperties;
-  }
-
-  @JsonAnySetter
-  public void setAdditionalProperty(String name, Object value) {
-    this.additionalProperties.put(name, value);
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -65,12 +55,11 @@ public class Hashtag {
     }
     Hashtag hashtag = (Hashtag) o;
     return Objects.equals(text, hashtag.text) &&
-        Objects.equals(indices, hashtag.indices) &&
-        Objects.equals(additionalProperties, hashtag.additionalProperties);
+        Objects.equals(indices, hashtag.indices);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, indices, additionalProperties);
+    return Objects.hash(text, indices);
   }
 }
