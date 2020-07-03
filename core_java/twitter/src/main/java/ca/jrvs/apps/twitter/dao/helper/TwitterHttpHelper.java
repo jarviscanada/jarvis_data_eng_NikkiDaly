@@ -11,9 +11,14 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 
 public class TwitterHttpHelper implements HttpHelper {
+
+  static final Logger logger = LoggerFactory.getLogger(TwitterHttpHelper.class);
 
   private final OAuthConsumer consumer;
   private final HttpClient httpClient;
@@ -22,8 +27,7 @@ public class TwitterHttpHelper implements HttpHelper {
       String tokenSecret) {
     consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
     consumer.setTokenWithSecret(accessToken, tokenSecret);
-
-    httpClient = new DefaultHttpClient();
+    httpClient = HttpClientBuilder.create().build();
   }
 
   @Override
@@ -60,9 +64,5 @@ public class TwitterHttpHelper implements HttpHelper {
     } catch (OAuthException | IOException ex) {
       throw new RuntimeException("Failed to execute", ex);
     }
-  }
-
-  public static void main(String[] args) {
-
   }
 }

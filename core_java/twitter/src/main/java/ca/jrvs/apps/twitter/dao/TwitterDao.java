@@ -18,10 +18,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ca.jrvs.apps.twitter.util.JsonUtil;
 
 public class TwitterDao implements CrdDao<Tweet, String> {
+
+  static final Logger logger = LoggerFactory.getLogger(TwitterDao.class);
 
   //URI Constraints
   private static final String API_BASE_URI = "https://api.twitter.com";
@@ -116,9 +120,9 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     int status = response.getStatusLine().getStatusCode();
     if (status != httpOk) {
       try {
-        System.out.println(EntityUtils.toString(response.getEntity()));
+        logger.error(EntityUtils.toString(response.getEntity()));
       } catch (IOException ex) {
-        System.out.println("Response has no entity");
+        logger.error("ERROR: Response has no entity");
       }
       throw new RuntimeException("Unexpected HTTP status code:" + status);
     }
