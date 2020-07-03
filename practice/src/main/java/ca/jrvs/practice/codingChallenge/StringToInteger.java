@@ -12,13 +12,12 @@ public class StringToInteger {
   final Logger logger = LoggerFactory.getLogger(StringToInteger.class);
 
   /**
-   * Description : Returns string as integer value using Java parsing method
-   * Big O :
-   * Justification :
+   * Description : Returns string as integer value using Java parsing method Big O : Justification
+   * :
    */
   public Integer stringToInt(String str) {
     BasicConfigurator.configure();
-    str = str.trim().replaceAll("\\s","");
+    str = str.trim().replaceAll("\\s", "");
 
     try {
       Integer ans = Integer.parseInt(str);
@@ -30,9 +29,7 @@ public class StringToInteger {
   }
 
   /**
-   * Description :
-   * Big O :
-   * Justification :
+   * Description : Big O : Justification :
    */
   public Integer stringToIntAscii(String str) {
     if (str == null || str.length() == 0) {
@@ -43,7 +40,9 @@ public class StringToInteger {
     int index = 0;
     int ans = 0;
 
-    while (index < str.length() && str.charAt(index) == ' ') index++;
+    while (index < str.length() && str.charAt(index) == ' ') {
+      index++;
+    }
 
     if (index < str.length() && (str.charAt(index) == '-' || str.charAt(index) == '+')) {
       isNegative = (str.charAt(index) == '-');
@@ -52,11 +51,12 @@ public class StringToInteger {
 
     while (index < str.length() && Character.isDigit(str.charAt(index))) {
       int lastDigit = str.charAt(index++) - '0';
-      if (ans > Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10 && lastDigit > Integer.MAX_VALUE % 10)) {
+      if (ans > Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10
+          && lastDigit > Integer.MAX_VALUE % 10)) {
         return (isNegative) ? Integer.MIN_VALUE : Integer.MAX_VALUE;
       }
       ans = ans * 10 + lastDigit;
     }
-    return isNegative ? ans*(-1) : ans;
+    return isNegative ? ans * (-1) : ans;
   }
 }

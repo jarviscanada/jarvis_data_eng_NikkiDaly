@@ -6,17 +6,15 @@ package ca.jrvs.practice.codingChallenge;
 public class EvenOdd {
 
   /**
-   * Description : Determine if the number is even or odd using modulo
-   * Big O : O(1)
-   * Justification : It's a single modulo operation
+   * Description : Determine if the number is even or odd using modulo Big O : O(1) Justification :
+   * It's a single modulo operation
    */
   public String evenOddMod(int i) {
     return i % 2 == 0 ? "Even" : "Odd";
   }
 
   /**
-   * Description : Determine if the number is even or odd using bit operation
-   * Big O : O(1)
+   * Description : Determine if the number is even or odd using bit operation Big O : O(1)
    * Justification : It's a single XOR operation
    */
   public String evenOddBit(int i) {
