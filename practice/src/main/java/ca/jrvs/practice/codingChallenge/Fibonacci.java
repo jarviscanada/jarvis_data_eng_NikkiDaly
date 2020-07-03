@@ -6,16 +6,18 @@ package ca.jrvs.practice.codingChallenge;
 public class Fibonacci {
 
   /**
-   * Description : Returns the nth fibonacci number using recursion Big O : O(2^n) Justification :
-   * The depth of the recursion tree would be n and the numbers of nodes in each row double each
-   * time
+   * Description : Returns the nth fibonacci number using recursion
+   * Big O : O(2^n)
+   * Justification : The depth of the recursion tree would be n and the numbers of
+   * nodes in each row double each time
    */
   public int fib(int n) {
     return (n == 0) ? 0 : (n == 1 || n == 2) ? 1 : fib(n - 1) + fib(n - 2);
   }
 
   /**
-   * Description : Returns the nth fibonacci number using dynamic programming Big O : O(n)
+   * Description : Returns the nth fibonacci number using dynamic programming
+   * Big O : O(n)
    * Justification : Second part of the function calls fibDynamic at most 2 times (2n) and execution
    * takes a constant time O(1), simplifies to O(n).
    */

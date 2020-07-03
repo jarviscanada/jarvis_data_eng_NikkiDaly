@@ -55,7 +55,9 @@ public class QueueStack {
     Stack<Object> s2 = new Stack<Object>();
 
     /**
-     * Decription : Adds element x onto queue Big O : O(1) Justification : inserts single element
+     * Decription : Adds element x onto queue
+     * Big O : O(1)
+     * Justification : inserts single element
      */
     @Override
     public void enqueue(Object element) {
@@ -63,9 +65,10 @@ public class QueueStack {
     }
 
     /**
-     * Description : Removes element from front of queue Big O : O(1) (Amortized) Justification :
-     * O(1) to pop one item from stack, if the stack is empty you need to push all the values which
-     * results in O(n) for worst case
+     * Description : Removes element from front of queue
+     * Big O : O(1) (Amortized)
+     * Justification : O(1) to pop one item from stack, if the stack is empty you
+     * need to push all the values which results in O(n) for worst case
      */
     @Override
     public Object dequeue() {

@@ -9,14 +9,12 @@ import org.slf4j.LoggerFactory;
  */
 public class StringToInteger {
 
-  final Logger logger = LoggerFactory.getLogger(StringToInteger.class);
-
   /**
-   * Description : Returns string as integer value using Java parsing method Big O : Justification
-   * :
+   * Description : Returns string as integer value using Java parsing method
+   * Big O : O(n)
+   * Justification: Integer.parseInt() function takes O(n)
    */
   public Integer stringToInt(String str) {
-    BasicConfigurator.configure();
     str = str.trim().replaceAll("\\s", "");
     int index = 0;
     while (index < str.length()) {
@@ -36,7 +34,9 @@ public class StringToInteger {
   }
 
   /**
-   * Description : Big O : Justification :
+   * Description : Uses Ascii character codes and modulus
+   * Big O : O(n)
+   * Justification : Must loop through all n characters of string
    */
   public Integer stringToIntAscii(String str) {
     if (str == null || str.length() == 0) {

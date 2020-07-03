@@ -22,8 +22,9 @@ public class StackQueue {
     E top;
 
     /**
-     * Description : pushes element onto the stack Big O : O(1) Justification : Adds single element
-     * to stack
+     * Description : pushes element onto the stack
+     * Big O : O(1)
+     * Justification : Adds single element to stack
      */
     @Override
     public void push(E element) {
@@ -32,8 +33,9 @@ public class StackQueue {
     }
 
     /**
-     * Description: pops element off of stack Big O : O(n) Justification : dequeues n elements from
-     * q1 and enqueues n-1 elements to q2
+     * Description: pops element off of stack
+     * Big O : O(n)
+     * Justification : dequeues n elements from q1 and enqueues n-1 elements to q2
      */
     @Override
     public E pop() {
@@ -54,8 +56,9 @@ public class StackQueue {
     Queue<E> q1 = new LinkedList<>();
 
     /**
-     * Description : Pushes element onto stack Big O : O(n) Justification : removes n elements and
-     * adds n+1
+     * Description : Pushes element onto stack
+     * Big O : O(n)
+     * Justification : removes n elements and adds n+1
      */
     @Override
     public void push(E element) {
@@ -68,8 +71,9 @@ public class StackQueue {
     }
 
     /**
-     * Description : pops element off of stack Big O : O(1) Justification : Simply removes a single
-     * element from stack
+     * Description : pops element off of stack
+     * Big O : O(1)
+     * Justification : Simply removes a single element from stack
      */
     @Override
     public E pop() {
