@@ -12,19 +12,20 @@ public class StringToInteger {
   final Logger logger = LoggerFactory.getLogger(StringToInteger.class);
 
   /**
-   * Description : Returns string as integer value using Java parsing method
-   * Big O :
-   * Justification :
+   * Description : Returns string as integer value using Java parsing method Big O : Justification
+   * :
    */
   public Integer stringToInt(String str) {
     BasicConfigurator.configure();
     str = str.trim().replaceAll("\\s", "");
     int index = 0;
     while (index < str.length()) {
-      if (Character.isDigit(str.charAt(index)) || str.charAt(index) == '+' || str.charAt(index) == '-')
+      if (Character.isDigit(str.charAt(index)) || str.charAt(index) == '+'
+          || str.charAt(index) == '-') {
         index++;
-      else
+      } else {
         break;
+      }
     }
     str = str.substring(0, index);
     if (str.length() == 0) {
