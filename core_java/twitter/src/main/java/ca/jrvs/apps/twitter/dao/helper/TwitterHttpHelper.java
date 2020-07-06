@@ -85,17 +85,4 @@ public class TwitterHttpHelper implements HttpHelper {
       throw new IllegalArgumentException("Unknown Http method: " + method.name());
     }
   }
-<<<<<<< HEAD
-
-  @Override
-  public HttpResponse httpGet(URI uri) {
-    try {
-      return executeHttpRequest(HttpMethod.GET, uri, null);
-    } catch (OAuthException | IOException ex) {
-      throw new RuntimeException("Failed to execute", ex);
-    }
-  }
-
-=======
->>>>>>> 5d781f9a5d658e63a484cdf7df3274082833dbd2
 }

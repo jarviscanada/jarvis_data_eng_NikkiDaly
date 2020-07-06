@@ -71,7 +71,7 @@ public class TwitterDaoIntTest {
     assertTrue(hashtag.contains(postedTweet.getEntities().getHashtags().get(0).getText()));
 
   }
-  
+
   @Test
   public void findById() throws Exception {
     Tweet tweet = dao.findById(testTweet.getIdStr());
