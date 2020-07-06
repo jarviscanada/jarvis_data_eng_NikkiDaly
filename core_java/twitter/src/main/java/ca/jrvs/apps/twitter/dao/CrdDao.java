@@ -4,7 +4,7 @@ public interface CrdDao<T, ID> {
 
   /**
    * Create an entity(Tweet) to the underlying storage
-   * @param entity entity that to be created
+   * @param entity entity that is to be created
    * @return created entity
    */
   T create(T entity);

@@ -1,27 +1,21 @@
 package ca.jrvs.apps.twitter.dao;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
-import ca.jrvs.apps.twitter.model.Entities;
 import ca.jrvs.apps.twitter.model.Tweet;
 import com.google.gdata.util.common.base.PercentEscaper;
-import com.sun.jndi.toolkit.url.Uri;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.xml.stream.events.EntityDeclaration;
-import oauth.signpost.exception.OAuthCommunicationException;
-import oauth.signpost.exception.OAuthExpectationFailedException;
-import oauth.signpost.exception.OAuthMessageSignerException;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ca.jrvs.apps.twitter.util.JsonUtil;
 
 public class TwitterDao implements CrdDao<Tweet, String> {
+
+  static final Logger logger = LoggerFactory.getLogger(TwitterDao.class);
 
   //URI Constraints
   private static final String API_BASE_URI = "https://api.twitter.com";
@@ -45,7 +39,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
 
   /**
    * Creates a tweet object
-   * @param tweet entity to be created
+   * @param tweet entity that is to be created
    * @return created entity
    */
   @Override
@@ -59,7 +53,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   }
 
   /**
-   * Finds a tweet from the given id
+   * Find an entity(Tweet) by its id
    * @param s tweet id
    * @return found tweet entity
    */
@@ -67,7 +61,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   public Tweet findById(String s) {
     URI uri;
     try {
-      String uriStr = API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + s;
+      String uriStr = API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + s;
       uri = new URI(uriStr);
     } catch (URISyntaxException ex) {
       throw new IllegalArgumentException("Invalid id input", ex);
@@ -79,7 +73,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   }
 
   /**
-   * Deletes a tweet from the given id
+   * Deletes an entity(Tweet) from its id
    * @param s tweet id to be deleted
    * @return deleted tweet entity
    */
@@ -102,23 +96,24 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     URI uri;
     PercentEscaper percentEscaper = new PercentEscaper("", false);
     try {
-      uri = new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + percentEscaper.escape(tweet.getText()) + AMPERSAND
-          + "long" + EQUAL + (tweet.getCoordinates().getCoordinates().get(0) + AMPERSAND +
-          "lat" + EQUAL + (tweet.getCoordinates().getCoordinates().get(1))));
+      uri = new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + percentEscaper
+          .escape(tweet.getText()) + AMPERSAND + "long" + EQUAL + tweet.getCoordinates()
+          .getCoordinates().get(0) + AMPERSAND + "lat" + EQUAL + tweet.getCoordinates()
+          .getCoordinates().get(1));
       return uri;
     } catch (URISyntaxException ex) {
       throw new IllegalArgumentException("Invalid input", ex);
     }
   }
 
-  private Tweet parseResponseBody(HttpResponse response, int httpOk) {
-    Tweet tweet;
+   Tweet parseResponseBody(HttpResponse response, int httpOk) {
+    Tweet tweet = null;
     int status = response.getStatusLine().getStatusCode();
     if (status != httpOk) {
       try {
-        System.out.println(EntityUtils.toString(response.getEntity()));
+        logger.error(EntityUtils.toString(response.getEntity()));
       } catch (IOException ex) {
-        System.out.println("Response has no entity");
+        logger.error("ERROR: Response has no entity");
       }
       throw new RuntimeException("Unexpected HTTP status code:" + status);
     }

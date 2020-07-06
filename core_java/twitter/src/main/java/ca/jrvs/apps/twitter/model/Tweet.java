@@ -1,11 +1,6 @@
 package ca.jrvs.apps.twitter.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -21,7 +16,7 @@ import java.util.Objects;
     "entities",
     "coordinates",
     "retweet_count",
-    "favorite_count",
+    "favourite_count",
     "favorited",
     "retweeted"
 })
@@ -40,13 +35,13 @@ public class Tweet {
   @JsonProperty("coordinates")
   private Coordinates coordinates;
   @JsonProperty("retweet_count")
-  private Integer retweetCount;
+  private int retweetCount;
   @JsonProperty("favorite_count")
-  private Integer favoriteCount;
+  private int favoriteCount;
   @JsonProperty("favorited")
-  private Boolean favorited;
+  private boolean favorited;
   @JsonProperty("retweeted")
-  private Boolean retweeted;
+  private boolean retweeted;
 
   @JsonProperty("created_at")
   public String getCreatedAt() {
@@ -64,7 +59,7 @@ public class Tweet {
   }
 
   @JsonProperty("id")
-  public void setId(Integer id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -109,42 +104,42 @@ public class Tweet {
   }
 
   @JsonProperty("retweet_count")
-  public Integer getRetweetCount() {
+  public int getRetweetCount() {
     return retweetCount;
   }
 
   @JsonProperty("retweet_count")
-  public void setRetweetCount(Integer retweetCount) {
+  public void setRetweetCount(int retweetCount) {
     this.retweetCount = retweetCount;
   }
 
   @JsonProperty("favorite_count")
-  public Integer getFavoriteCount() {
+  public int getFavoriteCount() {
     return favoriteCount;
   }
 
   @JsonProperty("favorite_count")
-  public void setFavoriteCount(Integer favoriteCount) {
+  public void setFavoriteCount(int favoriteCount) {
     this.favoriteCount = favoriteCount;
   }
 
   @JsonProperty("favorited")
-  public Boolean getFavorited() {
+  public boolean isFavorited() {
     return favorited;
   }
 
   @JsonProperty("favorited")
-  public void setFavorited(Boolean favorited) {
+  public void setFavorited(boolean favorited) {
     this.favorited = favorited;
   }
 
   @JsonProperty("retweeted")
-  public Boolean getRetweeted() {
+  public boolean isRetweeted() {
     return retweeted;
   }
 
   @JsonProperty("retweeted")
-  public void setRetweeted(Boolean retweeted) {
+  public void setRetweeted(boolean retweeted) {
     this.retweeted = retweeted;
   }
 
@@ -157,16 +152,16 @@ public class Tweet {
       return false;
     }
     Tweet tweet = (Tweet) o;
-    return Objects.equals(createdAt, tweet.createdAt) &&
-        Objects.equals(id, tweet.id) &&
+    return id == tweet.id &&
+        retweetCount == tweet.retweetCount &&
+        favoriteCount == tweet.favoriteCount &&
+        favorited == tweet.favorited &&
+        retweeted == tweet.retweeted &&
+        Objects.equals(createdAt, tweet.createdAt) &&
         Objects.equals(idStr, tweet.idStr) &&
         Objects.equals(text, tweet.text) &&
         Objects.equals(entities, tweet.entities) &&
-        Objects.equals(coordinates, tweet.coordinates) &&
-        Objects.equals(retweetCount, tweet.retweetCount) &&
-        Objects.equals(favoriteCount, tweet.favoriteCount) &&
-        Objects.equals(favorited, tweet.favorited) &&
-        Objects.equals(retweeted, tweet.retweeted);
+        Objects.equals(coordinates, tweet.coordinates);
   }
 
   @Override

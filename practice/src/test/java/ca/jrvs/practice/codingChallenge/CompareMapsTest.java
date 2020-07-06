@@ -1,11 +1,12 @@
 package ca.jrvs.practice.codingChallenge;
 
+import static org.junit.Assert.assertEquals;
+
 import ca.jrvs.practice.dataStructure.map.HashJMap;
 import ca.jrvs.practice.dataStructure.map.JMap;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 public class CompareMapsTest {
 

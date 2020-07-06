@@ -1,15 +1,10 @@
 package ca.jrvs.apps.twitter.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.Arrays;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -26,11 +21,11 @@ public class UserMention {
   @JsonProperty("name")
   private String name;
   @JsonProperty("indices")
-  private List<Integer> indices = null;
+  private int[] indices;
   @JsonProperty("screen_name")
   private String screenName;
   @JsonProperty("id")
-  private Integer id;
+  private long id;
   @JsonProperty("id_str")
   private String idStr;
 
@@ -45,12 +40,12 @@ public class UserMention {
   }
 
   @JsonProperty("indices")
-  public List<Integer> getIndices() {
+  public int[] getIndices() {
     return indices;
   }
 
   @JsonProperty("indices")
-  public void setIndices(List<Integer> indices) {
+  public void setIndices(int[] indices) {
     this.indices = indices;
   }
 
@@ -65,12 +60,12 @@ public class UserMention {
   }
 
   @JsonProperty("id")
-  public Integer getId() {
+  public long getId() {
     return id;
   }
 
   @JsonProperty("id")
-  public void setId(Integer id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -93,15 +88,17 @@ public class UserMention {
       return false;
     }
     UserMention that = (UserMention) o;
-    return Objects.equals(name, that.name) &&
-        Objects.equals(indices, that.indices) &&
+    return id == that.id &&
+        Objects.equals(name, that.name) &&
+        Arrays.equals(indices, that.indices) &&
         Objects.equals(screenName, that.screenName) &&
-        Objects.equals(id, that.id) &&
         Objects.equals(idStr, that.idStr);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, indices, screenName, id, idStr);
+    int result = Objects.hash(name, screenName, id, idStr);
+    result = 31 * result + Arrays.hashCode(indices);
+    return result;
   }
 }

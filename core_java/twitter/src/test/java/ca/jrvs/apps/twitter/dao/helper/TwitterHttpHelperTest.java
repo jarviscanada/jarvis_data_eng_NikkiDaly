@@ -1,7 +1,6 @@
 package ca.jrvs.apps.twitter.dao.helper;
 
 import java.net.URI;
-import javax.swing.text.html.parser.Entity;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
