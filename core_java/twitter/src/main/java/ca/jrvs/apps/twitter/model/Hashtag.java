@@ -51,6 +51,7 @@ public class Hashtag {
     Hashtag hashtag = (Hashtag) o;
     return Objects.equals(text, hashtag.text) &&
         Arrays.equals(indices, hashtag.indices);
+
   }
 
   @Override

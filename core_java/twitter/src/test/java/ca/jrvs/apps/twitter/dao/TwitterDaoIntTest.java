@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 public class TwitterDaoIntTest {
 
+
   static final Logger logger = LoggerFactory.getLogger(TwitterHttpHelperTest.class);
   private TwitterDao dao;
   private Tweet testTweet;
@@ -62,11 +63,13 @@ public class TwitterDaoIntTest {
     assertEquals(text, postedTweet.getText());
 
     assertNotNull(postedTweet.getCoordinates());
+
     assertEquals(2, postedTweet.getCoordinates().getCoordinates().size());
     assertEquals(lon, postedTweet.getCoordinates().getCoordinates().get(0));
     assertEquals(lat, postedTweet.getCoordinates().getCoordinates().get(1));
 
     assertTrue(hashtag.contains(postedTweet.getEntities().getHashtags().get(0).getText()));
+
   }
 
   @Test
@@ -89,3 +92,4 @@ public class TwitterDaoIntTest {
     }
   }
 }
+
