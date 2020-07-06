@@ -1,46 +1,71 @@
 package ca.jrvs.apps.twitter.model;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.Arrays;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
-    "id",
-    "id_str",
-    "indices",
     "name",
-    "screen_name"
+    "indices",
+    "screen_name",
+    "id",
+    "id_str"
 })
 public class UserMention {
 
-  @JsonProperty("id")
-  private Integer id;
-  @JsonProperty("id_str")
-  private String idStr;
-  @JsonProperty("indices")
-  private List<Integer> indices = null;
   @JsonProperty("name")
   private String name;
+  @JsonProperty("indices")
+  private int[] indices;
   @JsonProperty("screen_name")
   private String screenName;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+  @JsonProperty("id")
+  private long id;
+  @JsonProperty("id_str")
+  private String idStr;
+
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @JsonProperty("indices")
+  public int[] getIndices() {
+    return indices;
+  }
+
+  @JsonProperty("indices")
+  public void setIndices(int[] indices) {
+    this.indices = indices;
+  }
+
+  @JsonProperty("screen_name")
+  public String getScreenName() {
+    return screenName;
+  }
+
+  @JsonProperty("screen_name")
+  public void setScreenName(String screenName) {
+    this.screenName = screenName;
+  }
 
   @JsonProperty("id")
-  public Integer getId() {
+  public long getId() {
     return id;
   }
 
   @JsonProperty("id")
-  public void setId(Integer id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -54,46 +79,6 @@ public class UserMention {
     this.idStr = idStr;
   }
 
-  @JsonProperty("indices")
-  public List<Integer> getIndices() {
-    return indices;
-  }
-
-  @JsonProperty("indices")
-  public void setIndices(List<Integer> indices) {
-    this.indices = indices;
-  }
-
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @JsonProperty("screen_name")
-  public String getScreenName() {
-    return screenName;
-  }
-
-  @JsonProperty("screen_name")
-  public void setScreenName(String screenName) {
-    this.screenName = screenName;
-  }
-
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return this.additionalProperties;
-  }
-
-  @JsonAnySetter
-  public void setAdditionalProperty(String name, Object value) {
-    this.additionalProperties.put(name, value);
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,16 +88,17 @@ public class UserMention {
       return false;
     }
     UserMention that = (UserMention) o;
-    return Objects.equals(id, that.id) &&
-        Objects.equals(idStr, that.idStr) &&
-        Objects.equals(indices, that.indices) &&
+    return id == that.id &&
         Objects.equals(name, that.name) &&
+        Arrays.equals(indices, that.indices) &&
         Objects.equals(screenName, that.screenName) &&
-        Objects.equals(additionalProperties, that.additionalProperties);
+        Objects.equals(idStr, that.idStr);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, idStr, indices, name, screenName, additionalProperties);
+    int result = Objects.hash(name, screenName, id, idStr);
+    result = 31 * result + Arrays.hashCode(indices);
+    return result;
   }
 }
