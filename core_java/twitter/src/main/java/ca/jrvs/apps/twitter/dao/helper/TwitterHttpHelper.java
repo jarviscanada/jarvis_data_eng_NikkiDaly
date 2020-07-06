@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -23,17 +24,45 @@ public class TwitterHttpHelper implements HttpHelper {
   private final OAuthConsumer consumer;
   private final HttpClient httpClient;
 
+  /**
+   * Constructor setting up environment variables from parameters
+   *
+   * @param consumerKey
+   * @param consumerSecret
+   * @param accessToken
+   * @param tokenSecret
+   */
   public TwitterHttpHelper(String consumerKey, String consumerSecret, String accessToken,
       String tokenSecret) {
     consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
     consumer.setTokenWithSecret(accessToken, tokenSecret);
-    httpClient = HttpClientBuilder.create().build();
+    httpClient = new DefaultHttpClient();
   }
 
+  /**
+   * Executes Http POST call
+   *
+   * @param uri
+   * @return
+   */
   @Override
   public HttpResponse httpPost(URI uri) {
     try {
       return executeHttpRequest(HttpMethod.POST, uri, null);
+    } catch (OAuthException | IOException ex) {
+      throw new RuntimeException("Failed to execute", ex);
+    }
+  }
+
+  /**
+   * Executes Http GEt call
+   * @param uri
+   * @return
+   */
+  @Override
+  public HttpResponse httpGet(URI uri) {
+    try {
+      return executeHttpRequest(HttpMethod.GET, uri, null);
     } catch (OAuthException | IOException ex) {
       throw new RuntimeException("Failed to execute", ex);
     }
@@ -54,15 +83,6 @@ public class TwitterHttpHelper implements HttpHelper {
       return httpClient.execute(request);
     } else {
       throw new IllegalArgumentException("Unknown Http method: " + method.name());
-    }
-  }
-
-  @Override
-  public HttpResponse httpGet(URI uri) {
-    try {
-      return executeHttpRequest(HttpMethod.GET, uri, null);
-    } catch (OAuthException | IOException ex) {
-      throw new RuntimeException("Failed to execute", ex);
     }
   }
 }
