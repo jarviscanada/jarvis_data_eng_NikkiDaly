@@ -106,7 +106,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     }
   }
 
-   Tweet parseResponseBody(HttpResponse response, int httpOk) {
+   public Tweet parseResponseBody(HttpResponse response, int httpOk) {
     Tweet tweet = null;
     int status = response.getStatusLine().getStatusCode();
     if (status != httpOk) {

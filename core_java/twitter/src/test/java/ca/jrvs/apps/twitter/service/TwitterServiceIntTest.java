@@ -1,4 +1,4 @@
-package ca.jrvs.apps.twitter.dao.service;
+package ca.jrvs.apps.twitter.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
