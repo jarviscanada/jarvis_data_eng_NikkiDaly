@@ -1,9 +1,8 @@
-package ca.jrvs.apps.twitter.dao.controller;
+package ca.jrvs.apps.twitter.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import ca.jrvs.apps.twitter.controller.TwitterController;
 import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.dao.TwitterDao;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
