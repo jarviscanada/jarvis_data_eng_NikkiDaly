@@ -16,5 +16,4 @@ public class TwitterCLIComponentScan {
     TwitterCLIApp app = context.getBean(TwitterCLIApp.class);
     app.run(args);
   }
-
 }
