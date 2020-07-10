@@ -10,7 +10,7 @@ import java.util.Collection;
  *
  * @see java.util.List for JDK full version of List
  */
-interface JList<E> {
+public interface JList<E> {
 
   /**
    * Appends the specified element to the end of this list (optional

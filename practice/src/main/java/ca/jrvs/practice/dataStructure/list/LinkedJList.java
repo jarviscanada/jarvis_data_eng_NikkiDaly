@@ -2,21 +2,21 @@ package ca.jrvs.practice.dataStructure.list;
 
 public class LinkedJList<E> implements JList<E> {
 
-  private class Entry<E> {
+  public static class Node<E> {
 
-    E element;
-    Entry next;
-    Entry previous;
+    public E element;
+    public Node next;
+    public Node previous;
 
-    Entry(E element) {
+    public Node(E element) {
       this.element = element;
       this.next = null;
       this.previous = null;
     }
   }
 
-  private Entry first = null;
-  private Entry last = null;
+  private Node first = null;
+  private Node last = null;
   private int size = 0;
 
   /**
@@ -32,13 +32,13 @@ public class LinkedJList<E> implements JList<E> {
     if (e == null) {
       throw new NullPointerException("This list does not accept null elements");
     }
-    Entry entry = new Entry(e);
+    Node node = new Node(e);
     if (size == 0) {
-      first = last = entry;
+      first = last = node;
     } else {
-      entry.previous = last;
-      last.next = entry;
-      last = entry;
+      node.previous = last;
+      last.next = node;
+      last = node;
     }
     size++;
     return true;
@@ -56,7 +56,7 @@ public class LinkedJList<E> implements JList<E> {
   @Override
   public Object[] toArray() {
     Object[] array = new Object[size];
-    Entry<E> e = first;
+    Node<E> e = first;
     for (int i = 0; i < size; i++) {
       array[i] = e.element;
       e = e.next;
@@ -94,7 +94,7 @@ public class LinkedJList<E> implements JList<E> {
   @Override
   public int indexOf(Object o) {
     int index = 0;
-    Entry<E> e = first;
+    Node<E> e = first;
     while (e != null) {
       if (o.equals(e.element)) {
         return index;
@@ -133,12 +133,12 @@ public class LinkedJList<E> implements JList<E> {
     if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException("index is out of range");
     }
-    Entry<E> e = getEntry(index);
+    Node<E> e = getNode(index);
     return e.element;
   }
 
-  private Entry getEntry(int index) {
-    Entry<E> e;
+  private Node getNode(int index) {
+    Node<E> e;
     if (index < size/2) {
       e = first;
       while (index-- > 0) {
@@ -166,12 +166,12 @@ public class LinkedJList<E> implements JList<E> {
     if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException("index is out of range");
     }
-    Entry<E> e = getEntry(index);
-    removeEntry(e);
+    Node<E> e = getNode(index);
+    removeNode(e);
     return e.element;
   }
 
-  private void removeEntry(Entry<E> e) {
+  private void removeNode(Node<E> e) {
     size--;
     if (size == 0) {
       first = last = null;
