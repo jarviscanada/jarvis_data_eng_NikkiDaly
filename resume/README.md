@@ -1,66 +1,50 @@
 Nikki Daly . Jarvis Consulting
 
->Use this section to introduce yourself, your academic and professional background, what excites you about the data engineering industry and some of your hobbies. 100-150 words
-Donec fermentum, lectus tempor lobortis egestas, dolor dolor rhoncus justo, id pharetra odio ligula quis odio. Morbi blandit id quam eget porttitor. Integer at ullamcorper dolor, at egestas turpis. Fusce ultricies justo tellus, a congue augue aliquet sit amet. Quisque ultrices dolor eu turpis malesuada interdum. Suspendisse in nisl et massa laoreet sodales. Nulla quis lectus sit amet velit finibus feugiat eget nec quam. Praesent eget nibh et diam mollis venenatis. Mauris mi eros, varius in elit ut, ornare commodo magna. Nullam lacinia sapien pulvinar cursus tincidunt. Nam neque magna, accumsan a mi vel, tempor tristique nisl. Maecenas accumsan dignissim.
+>
+>I am a recent graduate from McGill University where I received my Bachelor of Engineering, majoring in Computer Engineering. I completed several internships throughout the course of my studies, which allowed me to gain professional experience as a software developer. First, I completed two 4-month internships with ScribbleLive, a content marketing software company, where I worked as a developer on their live-blogging software. Next, I worked at RockMass Technologies, a startup specializing in mining technology, completing another 4-month internship where I worked on designing the architecture and UI of their mapping device. My last internship was with Citibank Canada as a Technical Analyst on their Data and Regulations team. I became fascinated in learning about Big Data and it's role in financial services which led me to apply as a Data Engineer with Jarvis Consulting. Currently I am looking for a placement where I can apply my knowledge and skills as well as grow as a Data Engineer both technically and professionally. 
+>  
 
 ## Skills
 
->Group your skills by level. Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.). 
+**Proficient:** Java, Javascript, Linux/Bash, RDBMS/SQL, Agile/Scrum, Git, HTML
 
->**Proficient**: Keep the default skills. Add skills that you have learned from Jarvis projects and you are confident to work on in the future. You can also include the skills you learned outside Jarvis. You should have 8-12 skills and must not exceed one line in PDF version.
+**Competent:** Python, C, C++, Node.js, SAS
 
-**Proficient:** Java, Linux/Bash, RDBMS/SQL, Agile/Scrum, Git
-
->**Competent**:  Skills you learned from Jarvis projects but you are not confident to put into the proficient section. You can also include the skills you learned outside Jarvis. You should have no more than 12 skills and must not exceed one line in PDF version.
-
-**Competent:** 
-
->**Familiar**: Skills you have learned ourside Jarvis and you want to work on in the future. You should have no more than 12 skills and must not exceed one line in PDF version.
-
-**Familiar:** 
+**Familiar:** React, Angular, Matlab
 
 ## Development Projects
 
->Update Github link. Please keep this markdown syntax as some HR system may strip hyperlinks.
+Project source code: [https://github.com/jarviscanada/jarvis_data_eng_NikkiDaly](https://github.com/jarviscanada/jarvis_data_eng_NikkiDaly)
 
-Project source code: [https://github.com/jarviscanada/jarvis_data_eng_demo](https://github.com/jarviscanada/jarvis_data_eng_demo)
-
->The project description allows hiring managers to understand your project and technologies you used(e.g. programing langauge, libraries, algorithms, hardwards, tools, etc.). The project description must start with an action verb (https://bit.ly/35Um9Y7)
-
->Use *Not started* or *in-progress* as a placeholder
-
-- **[Cluster Monitor](./linux_sql)**: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.(40 words)
-- **[Core Java Apps](./core_java)**: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis efficitur.(30 words)
-- **[SpringBoot App](./springboot)**: Nam in ultrices elit, vitae imperdiet purus. Nulla facilisi. Duis eget dui in quam maximus efficitur. Sed commodo rhoncus lacus id commodo. Quisque sagittis in.
+- **[Cluster Monitor](./linux_sql)**: Implemented a set of bash scripts that gather data on hardware specifications of nodes within the linux cluster, monitor their resource usage in real time, and store the data to a PSQL database maintained in a docker instance. 
+- **[Core Java Apps](./core_java)**: Developed a series of Java Applications: one which mimics the bash grep function, another which implements a series of DAO functions in a JDBC system, and a Twitter CLI app which leverages the Twitter API to post/search/delete tweets from the command line. 
+- **[SpringBoot App](./springboot)**: Not started
 - **[Cloud & DevOps](./cloud_devops)**: Not started
 - **[Hadoop](./hadoop)**: Not started
 - **[Spark/Scala](./spark)**:  Not started
 
 ## Professional Experiences
 
->The job description allows hiring managers to understand your job and technologies you used(e.g. programing langauge, libraries, algorithms, hardwards, tools, etc.). The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem solving, improvements, communication). Write your Jarvis role as a professional expereince rather than training.
+**Software Developer,  Jarvis, Toronto (2020-Present):** Implemented several projects gaining experience and exposure to a wide set of tools and technologies including Linux, SQL, core Java, SpringBoot, Cloud, Hadoop, and Spark/Scala. 
 
-**Software Developer,  Jarvis, Toronto (2020-Present):** Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis. (30 words)
+**Tutor, Paper, Montreal (2019-Present):** Tutored multiple students between the ages of 10-18 in Math, Computer Science, and English through the company's online chat-based tutoring service, as well as edited essays through the online essay portal. 
 
-**Tutor, XYZ, Toronto (2019-Present):** Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.(40 words)
+**Technical Analyst Intern,  Citibank Canada, Mississauga (2019-2019):** Led the migration project to the new Jira environment for the Data and Regulation team leveraging the Jira REST API. Wrote SQL queries to collect and organize data to generate reports for business analysts. 
+
+**Software Developer Intern,  RockMass Technologies, Toronto (2018-2018):** Collaborated with a cross-functional team to design software architecture of a mapping device for mining technicians. Designed and implemented Javascript-based UI for the mapping device using Flask web framework.  
+
+**Software Developer Intern,  ScribbleLive, Toronto (2017-2017):** Developed new and existing features on the company's live-blogging product using primarily Javascript for the consumer-facing end, and React for the client-facing end. Worked on Agile-based scrum team, participating in bi-weekly sprints. 
+
+**Software Developer Intern,  ScribbleLive, Toronto (2016-2016):** Tested new and existing features on the company's live-blogging product using primarily Javascript for the consumer-facing end. Worked on Agile-based scrum team, participating in bi-weekly sprints. 
 
 ## Education & Academic Projects
 
-**XYZ University (2018-2020)**, Master of Engineering, Computer Engineering
+**McGill University (2015-2020)**, Bachelor of Engineering, Computer Engineering
 
-> 2-4 highlighted projects. Prioritize programming related project and describe the project and technologies. For non-technical project, focus on soft skills (e.g. reward, team collaboration, problem solving, improvements, communication). The description must be 30-40 words. 
+- **Fully Integrated T-Stick:** Improved the development process for an integrated digital musical instrument (DMI) by developing a C++ based program hosted on a Raspberry Pi 3B+ which integrates the routing of audio and control signals passed in from the user through sensors on the instrument. 
 
-- **Web Application:** Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-- **Robot Software:** Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-**ABC University (2014-2018)**, Bachelor of Applied Science, Electrical & Computer Engineering
-
-- **Snake Game:** Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+- **Capture the Flag Robot:** Designed and built an autonomous robot using LeJOS (Java for LEGO Mindstorms) that could complete a course and play a game of capture the flag with another robot. 
 
 ## Certificates & Awards & Activities
 
-> Remove this section if you don't have any. Description is optional
-
-- Dean's List (2015, 2016): Ut enim ad minim veniam
-- Volunteer, ABC Food bank (2017): Ut enim ad minim veniam
+- North American Irish Dance Champion
