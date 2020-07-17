@@ -1,10 +1,7 @@
 package ca.jrvs.apps.trading.service;
 
 import ca.jrvs.apps.trading.dao.MarketDataDao;
-import ca.jrvs.apps.trading.dao.QuoteDao;
-import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
-import com.sun.org.apache.xpath.internal.operations.Quo;
 import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +14,12 @@ public class QuoteService {
 
   private static final Logger logger = LoggerFactory.getLogger(QuoteService.class);
 
-  private QuoteDao quotedao;
+  //private QuoteDao quotedao;
   private MarketDataDao marketDataDao;
 
   @Autowired
-  public QuoteService(QuoteDao quotedao, MarketDataDao marketDataDao) {
-    this.quotedao = quotedao;
+  public QuoteService(/*QuoteDao quotedao,*/ MarketDataDao marketDataDao) {
+    //this.quotedao = quotedao;
     this.marketDataDao = marketDataDao;
   }
 
