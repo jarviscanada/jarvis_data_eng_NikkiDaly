@@ -24,7 +24,7 @@ public class QuoteService {
   private MarketDataDao marketDataDao;
 
   @Autowired
-  public QuoteService(QuoteDao quotedao, MarketDataDao marketDataDao) {
+  public QuoteService(QuoteDao quoteDao, MarketDataDao marketDataDao) {
     this.quoteDao = quoteDao;
     this.marketDataDao = marketDataDao;
   }

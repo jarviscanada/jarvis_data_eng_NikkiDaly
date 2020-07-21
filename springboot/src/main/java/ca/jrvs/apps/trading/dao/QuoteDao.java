@@ -28,8 +28,8 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   public static final String ID_COLUMN_NAME = "ticker";
 
   private static final Logger logger = LoggerFactory.getLogger(QuoteDao.class);
-  private JdbcTemplate jdbcTemplate;
-  private SimpleJdbcInsert simpleJdbcInsert;
+  private final JdbcTemplate jdbcTemplate;
+  private final SimpleJdbcInsert simpleJdbcInsert;
 
   @Autowired
   public QuoteDao(DataSource dataSource) {
@@ -68,8 +68,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
    * helper method that updates one quote
    */
   private int updateOne(Quote quote) {
-    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, "
-        + "bid_size=?, ask_price=?, ask_size=?, WHERE ticker=?";
+    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, bid_size=?, ask_price=?, ask_size=? WHERE ticker=?";
     return jdbcTemplate.update(update_sql, makeUpdateValues(quote));
   }
 

@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import net.bytebuddy.pool.TypePool.Resolution.Illegal;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +48,11 @@ public class QuoteServiceIntTest {
     quoteDao.save(savedQuote);
   }
 
+  @After
+  public void tearDown() {
+    quoteDao.deleteById(savedQuote.getId());
+  }
+
   @Test
   public void findIexQuoteByTicker() {
     IexQuote iexQuote = quoteService.findIexQuoteByTicker("GOOGL");
@@ -69,10 +75,9 @@ public class QuoteServiceIntTest {
   @Test
   public void saveQuotes() {
     List<Quote> quotes = quoteService.saveQuotes(Arrays.asList("GOOGL"));
-    assertEquals(quoteDao.findById("GOOGL").get(), "GOOGL");
-    quotes = quoteService.saveQuotes(Arrays.asList("Hey There"));
+    assertEquals(quoteDao.findById("GOOGL").get().getId(), "GOOGL");
     try {
-      quoteDao.findById("Hey There").get();
+      quoteService.saveQuotes(Arrays.asList("Hey there, how are you?"));
       fail();
     } catch (IllegalArgumentException ex){
       assertTrue(true);
