@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:twitter" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1e29e846-f48b-40cc-8760-1fb6503dd671" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1dmDrqleCiiERem1NnflpoRjLAa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/ca/jrvs/apps/twitter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../resume" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ca.jrvs.apps.twitter" />
+      <recent name="ca.jrvs.apps.twitter.service" />
+      <recent name="ca.jrvs.apps.twitter.dao.helper" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ca.jrvs.apps.twitter.spring" />
+      <recent name="ca.jrvs.apps.twitter.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TwitterCLIApp">
+    <configuration name="TwitterCLIApp" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="consumerKey" value="pccjWHzYHFUSMRvCxunrYrRvv" />
+        <env name="consumerSecret" value="cnz0cNm4ySH7yVSVcjpmRk2RNkJHuFB0BP4S4QGMODsiazBlKB" />
+        <env name="accessToken" value="1271165395987243009-FnYGZ0fUwb0q18TbLJZou5W5YHa67R" />
+        <env name="tokenSecret" value="QO7cWx0Uepnh3qKpAJszRytD3F2OLDwhnEmGzdWJcN4iR" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="ca.jrvs.apps.twitter.TwitterCLIApp" />
+      <module name="twitter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.jrvs.apps.twitter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwitterControllerIntTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="twitter" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.jrvs.apps.twitter.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ca.jrvs.apps.twitter.controller" />
+      <option name="MAIN_CLASS_NAME" value="ca.jrvs.apps.twitter.controller.TwitterControllerIntTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <envs>
+        <env name="consumerKey" value="pccjWHzYHFUSMRvCxunrYrRvv" />
+        <env name="consumerSecret" value="cnz0cNm4ySH7yVSVcjpmRk2RNkJHuFB0BP4S4QGMODsiazBlKB" />
+        <env name="accessToken" value="1271165395987243009-FnYGZ0fUwb0q18TbLJZou5W5YHa67R" />
+        <env name="tokenSecret" value="QO7cWx0Uepnh3qKpAJszRytD3F2OLDwhnEmGzdWJcN4iR" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwitterDaoIntTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="twitter" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.jrvs.apps.twitter.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ca.jrvs.apps.twitter.dao" />
+      <option name="MAIN_CLASS_NAME" value="ca.jrvs.apps.twitter.dao.TwitterDaoIntTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <envs>
+        <env name="consumerKey" value="pccjWHzYHFUSMRvCxunrYrRvv" />
+        <env name="consumerSecret" value="cnz0cNm4ySH7yVSVcjpmRk2RNkJHuFB0BP4S4QGMODsiazBlKB" />
+        <env name="accessToken" value="1271165395987243009-FnYGZ0fUwb0q18TbLJZou5W5YHa67R" />
+        <env name="tokenSecret" value="QO7cWx0Uepnh3qKpAJszRytD3F2OLDwhnEmGzdWJcN4iR" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwitterHttpHelperTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="twitter" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.jrvs.apps.twitter.dao.helper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ca.jrvs.apps.twitter.dao.helper" />
+      <option name="MAIN_CLASS_NAME" value="ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelperTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <envs>
+        <env name="consumerKey" value="pccjWHzYHFUSMRvCxunrYrRvv" />
+        <env name="consumerSecret" value="cnz0cNm4ySH7yVSVcjpmRk2RNkJHuFB0BP4S4QGMODsiazBlKB" />
+        <env name="accessToken" value="1271165395987243009-FnYGZ0fUwb0q18TbLJZou5W5YHa67R" />
+        <env name="tokenSecret" value="QO7cWx0Uepnh3qKpAJszRytD3F2OLDwhnEmGzdWJcN4iR" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwitterServiceIntTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="twitter" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.jrvs.apps.twitter.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ca.jrvs.apps.twitter.service" />
+      <option name="MAIN_CLASS_NAME" value="ca.jrvs.apps.twitter.service.TwitterServiceIntTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <envs>
+        <env name="consumerKey" value="pccjWHzYHFUSMRvCxunrYrRvv" />
+        <env name="consumerSecret" value="cnz0cNm4ySH7yVSVcjpmRk2RNkJHuFB0BP4S4QGMODsiazBlKB" />
+        <env name="accessToken" value="1271165395987243009-FnYGZ0fUwb0q18TbLJZou5W5YHa67R" />
+        <env name="tokenSecret" value="QO7cWx0Uepnh3qKpAJszRytD3F2OLDwhnEmGzdWJcN4iR" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.TwitterCLIApp" />
+      <item itemvalue="JUnit.TwitterHttpHelperTest" />
+      <item itemvalue="JUnit.TwitterDaoIntTest" />
+      <item itemvalue="JUnit.TwitterControllerIntTest" />
+      <item itemvalue="JUnit.TwitterServiceIntTest" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1e29e846-f48b-40cc-8760-1fb6503dd671" name="Default Changelist" comment="" />
+      <created>1593021576057</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593021576057</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="116" y="58" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594164496168">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="116" y="58" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1280.944@0.31.1280.944" timestamp="1594164496168" />
+    <state x="100" y="131" width="1060" height="704" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1594132400604">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="100" y="131" width="1060" height="704" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.31.1280.944@0.31.1280.944" timestamp="1594132400604" />
+    <state x="438" y="191" width="380" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1594145801727">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="438" y="191" width="380" height="585" key="#com.intellij.ide.util.MemberChooser/0.31.1280.944@0.31.1280.944" timestamp="1594145801727" />
+    <state x="361" y="262" width="530" height="445" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1593536775252">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="361" y="262" width="530" height="445" key="#com.intellij.ide.util.PackageChooserDialog/0.31.1280.944@0.31.1280.944" timestamp="1593536775252" />
+    <state x="139" y="409" width="1022" height="150" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594141323755">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="139" y="409" width="1022" height="150" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.31.1280.944@0.31.1280.944" timestamp="1594141323755" />
+    <state x="391" y="353" width="513" height="270" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594140668750">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="391" y="353" width="513" height="270" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.31.1280.944@0.31.1280.944" timestamp="1594140668750" />
+    <state x="411" y="366" width="477" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1594141325557">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="411" y="366" width="477" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.31.1280.944@0.31.1280.944" timestamp="1594141325557" />
+    <state x="373" y="248" width="530" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594144440521">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="373" y="248" width="530" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.31.1280.944@0.31.1280.944" timestamp="1594144440521" />
+    <state x="0" y="31" width="1096" height="758" key="#xdebugger.evaluate" timestamp="1594131781883">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="0" y="31" width="1096" height="758" key="#xdebugger.evaluate/0.31.1280.944@0.31.1280.944" timestamp="1594131781883" />
+    <state x="502" y="161" width="307" height="480" key="EnvironmentVariablesDialog" timestamp="1593032502035">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="502" y="161" width="307" height="480" key="EnvironmentVariablesDialog/0.31.1280.944@0.31.1280.944" timestamp="1593032502035" />
+    <state x="413" y="241" width="430" height="486" key="FileChooserDialogImpl" timestamp="1594655386042">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="413" y="241" width="430" height="486" key="FileChooserDialogImpl/0.31.1280.944@0.31.1280.944" timestamp="1594655386042" />
+    <state width="1212" height="454" key="GridCell.Tab.0.bottom" timestamp="1594167113702">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="454" key="GridCell.Tab.0.bottom/0.31.1280.944@0.31.1280.944" timestamp="1594167113702" />
+    <state width="1212" height="454" key="GridCell.Tab.0.center" timestamp="1594167113702">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="454" key="GridCell.Tab.0.center/0.31.1280.944@0.31.1280.944" timestamp="1594167113702" />
+    <state width="1212" height="454" key="GridCell.Tab.0.left" timestamp="1594167113699">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="454" key="GridCell.Tab.0.left/0.31.1280.944@0.31.1280.944" timestamp="1594167113699" />
+    <state width="1212" height="454" key="GridCell.Tab.0.right" timestamp="1594167113702">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="454" key="GridCell.Tab.0.right/0.31.1280.944@0.31.1280.944" timestamp="1594167113702" />
+    <state width="1212" height="341" key="GridCell.Tab.1.bottom" timestamp="1594146417876">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="341" key="GridCell.Tab.1.bottom/0.31.1280.944@0.31.1280.944" timestamp="1594146417876" />
+    <state width="1212" height="341" key="GridCell.Tab.1.center" timestamp="1594146417872">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="341" key="GridCell.Tab.1.center/0.31.1280.944@0.31.1280.944" timestamp="1594146417872" />
+    <state width="1212" height="341" key="GridCell.Tab.1.left" timestamp="1594146417872">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="341" key="GridCell.Tab.1.left/0.31.1280.944@0.31.1280.944" timestamp="1594146417872" />
+    <state width="1212" height="341" key="GridCell.Tab.1.right" timestamp="1594146417876">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="341" key="GridCell.Tab.1.right/0.31.1280.944@0.31.1280.944" timestamp="1594146417876" />
+    <state x="163" y="141" width="930" height="686" key="Maven.ArtifactSearchDialog" timestamp="1593530459300">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="163" y="141" width="930" height="686" key="Maven.ArtifactSearchDialog/0.31.1280.944@0.31.1280.944" timestamp="1593530459300" />
+    <state x="246" y="267" width="763" height="433" key="NewModule_or_Project.wizard" timestamp="1593096778946">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="246" y="267" width="763" height="433" key="NewModule_or_Project.wizard/0.31.1280.944@0.31.1280.944" timestamp="1593096778946" />
+    <state x="113" y="60" width="1030" height="847" key="SettingsEditor" timestamp="1594217816872">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="113" y="60" width="1030" height="847" key="SettingsEditor/0.31.1280.944@0.31.1280.944" timestamp="1594217816872" />
+    <state width="630" height="452" key="XDebugger.FullValuePopup" timestamp="1594055351271">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="630" height="452" key="XDebugger.FullValuePopup/0.31.1280.944@0.31.1280.944" timestamp="1594055351271" />
+    <state x="410" y="263" width="435" height="441" key="chooseDestDirectoryDialog" timestamp="1594140646832">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="410" y="263" width="435" height="441" key="chooseDestDirectoryDialog/0.31.1280.944@0.31.1280.944" timestamp="1594140646832" />
+    <state x="410" y="399" width="439" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594212361551">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="410" y="399" width="439" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.31.1280.944@0.31.1280.944" timestamp="1594212361551" />
+    <state x="384" y="266" width="521" height="435" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1593536777399">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="384" y="266" width="521" height="435" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.31.1280.944@0.31.1280.944" timestamp="1593536777399" />
+    <state x="321" y="55" width="617" height="855" key="find.popup" timestamp="1593537603723">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="321" y="55" width="617" height="855" key="find.popup/0.31.1280.944@0.31.1280.944" timestamp="1593537603723" />
+    <state x="293" y="226" width="672" height="678" key="search.everywhere.popup" timestamp="1594214514266">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="293" y="226" width="672" height="678" key="search.everywhere.popup/0.31.1280.944@0.31.1280.944" timestamp="1594214514266" />
+  </component>
+</project>

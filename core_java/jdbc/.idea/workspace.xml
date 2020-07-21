@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ecc7f7dc-71d4-46f2-8deb-7b10dc7b6b16" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../twitter/src/main/java/ca/jrvs/apps/twitter/example/dto/TwitterApiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../twitter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../twitter/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1dY4CmaggLLRiV4GsFJcdn3wP8s" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../twitter" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ca.jrvs.apps.jdbc" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="JDBCExecuter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.jrvs.apps.jdbc.JDBCExecuter" />
+      <module name="grep" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.jrvs.apps.jdbc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JDBCExecuter" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ecc7f7dc-71d4-46f2-8deb-7b10dc7b6b16" name="Default Changelist" comment="" />
+      <created>1592588567071</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592588567071</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="438" y="191" width="544" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1592870047245">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="438" y="191" width="544" height="585" key="#com.intellij.ide.util.MemberChooser/0.31.1280.944@0.31.1280.944" timestamp="1592870047245" />
+    <state x="60" y="321" key="#xdebugger.evaluate" timestamp="1592859933075">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="60" y="321" key="#xdebugger.evaluate/0.31.1280.944@0.31.1280.944" timestamp="1592859933075" />
+    <state x="413" y="201" width="430" height="565" key="FileChooserDialogImpl" timestamp="1593029742473">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="413" y="201" width="430" height="565" key="FileChooserDialogImpl/0.31.1280.944@0.31.1280.944" timestamp="1593029742473" />
+    <state width="1212" height="265" key="GridCell.Tab.0.bottom" timestamp="1592871677522">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="265" key="GridCell.Tab.0.bottom/0.31.1280.944@0.31.1280.944" timestamp="1592871677522" />
+    <state width="1212" height="265" key="GridCell.Tab.0.center" timestamp="1592871677522">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="265" key="GridCell.Tab.0.center/0.31.1280.944@0.31.1280.944" timestamp="1592871677522" />
+    <state width="1212" height="265" key="GridCell.Tab.0.left" timestamp="1592871677521">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="265" key="GridCell.Tab.0.left/0.31.1280.944@0.31.1280.944" timestamp="1592871677521" />
+    <state width="1212" height="265" key="GridCell.Tab.0.right" timestamp="1592871677522">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="265" key="GridCell.Tab.0.right/0.31.1280.944@0.31.1280.944" timestamp="1592871677522" />
+    <state width="1212" height="380" key="GridCell.Tab.1.bottom" timestamp="1592871660281">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="380" key="GridCell.Tab.1.bottom/0.31.1280.944@0.31.1280.944" timestamp="1592871660281" />
+    <state width="1212" height="380" key="GridCell.Tab.1.center" timestamp="1592871660281">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="380" key="GridCell.Tab.1.center/0.31.1280.944@0.31.1280.944" timestamp="1592871660281" />
+    <state width="1212" height="380" key="GridCell.Tab.1.left" timestamp="1592871660281">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="380" key="GridCell.Tab.1.left/0.31.1280.944@0.31.1280.944" timestamp="1592871660281" />
+    <state width="1212" height="380" key="GridCell.Tab.1.right" timestamp="1592871660281">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state width="1212" height="380" key="GridCell.Tab.1.right/0.31.1280.944@0.31.1280.944" timestamp="1592871660281" />
+    <state x="113" y="60" width="1030" height="847" key="SettingsEditor" timestamp="1592588688422">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="113" y="60" width="1030" height="847" key="SettingsEditor/0.31.1280.944@0.31.1280.944" timestamp="1592588688422" />
+    <state x="267" y="226" width="672" height="678" key="search.everywhere.popup" timestamp="1592921402217">
+      <screen x="0" y="31" width="1280" height="944" />
+    </state>
+    <state x="267" y="226" width="672" height="678" key="search.everywhere.popup/0.31.1280.944@0.31.1280.944" timestamp="1592921402217" />
+  </component>
+</project>
