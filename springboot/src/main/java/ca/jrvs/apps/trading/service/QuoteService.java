@@ -88,7 +88,7 @@ public class QuoteService {
         logger.error("Error: Ticker not found from IEX");
       }
     });
-    return null;
+    return quotes;
   }
 
   public Quote saveQuote(String ticker) {
