@@ -27,7 +27,10 @@ public class TestConfig {
 
   @Bean
   public HttpClientConnectionManager httpClientConnectionManager() {
-    return new PoolingHttpClientConnectionManager();
+    PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+    cm.setMaxTotal(50);
+    cm.setDefaultMaxPerRoute(50);
+    return cm;
   }
 
   @Bean
