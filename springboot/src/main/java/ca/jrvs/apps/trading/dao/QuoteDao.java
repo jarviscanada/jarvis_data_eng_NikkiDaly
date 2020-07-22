@@ -18,15 +18,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@Repository
 public class QuoteDao implements CrudRepository<Quote, String> {
 
   public static final String TABLE_NAME = "quote";
   public static final String ID_COLUMN_NAME = "ticker";
 
   private static final Logger logger = LoggerFactory.getLogger(QuoteDao.class);
-  private JdbcTemplate jdbcTemplate;
-  private SimpleJdbcInsert simpleJdbcInsert;
+  private final JdbcTemplate jdbcTemplate;
+  private final SimpleJdbcInsert simpleJdbcInsert;
 
   @Autowired
   public QuoteDao(DataSource dataSource) {
@@ -65,8 +68,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
    * helper method that updates one quote
    */
   private int updateOne(Quote quote) {
-    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, "
-        + "bid_size=?, ask_price=?, ask_size=?, WHERE ticker=?";
+    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, bid_size=?, ask_price=?, ask_size=? WHERE ticker=?";
     return jdbcTemplate.update(update_sql, makeUpdateValues(quote));
   }
 
@@ -111,7 +113,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
    */
   public Quote findQuoteByTicker(String ticker, boolean forUpdate) {
     Quote quote = null;
-    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ticker + " =?";
+    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID_COLUMN_NAME + " =?";
     if (forUpdate) {
       selectSql += " for update";
     }
@@ -143,7 +145,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
    * @throws DataAccessException if failed to update
    */
   @Override
-  public Iterable<Quote> findAll() {
+  public List<Quote> findAll() {
     String selectSql = "SELECT * FROM " + TABLE_NAME;
     List<Quote> quotes =  jdbcTemplate
         .query(selectSql, BeanPropertyRowMapper.newInstance(Quote.class));

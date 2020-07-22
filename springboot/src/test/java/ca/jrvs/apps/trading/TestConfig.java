@@ -27,11 +27,15 @@ public class TestConfig {
 
   @Bean
   public HttpClientConnectionManager httpClientConnectionManager() {
-    return new PoolingHttpClientConnectionManager();
+    PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+    cm.setMaxTotal(50);
+    cm.setDefaultMaxPerRoute(50);
+    return cm;
   }
 
   @Bean
   public DataSource dataSource() {
+    System.out.println("Creating apache data source");
     String url = System.getenv("PSQL_URL");
     String user = System.getenv("PSQL_USER");
     String password = System.getenv("PSQL_PASSWORD");
