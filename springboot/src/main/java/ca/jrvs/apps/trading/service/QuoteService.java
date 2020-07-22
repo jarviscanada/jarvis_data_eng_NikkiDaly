@@ -29,6 +29,13 @@ public class QuoteService {
     this.marketDataDao = marketDataDao;
   }
 
+  /**
+   * Find an IexQuote
+   *
+   * @param ticker id
+   * @return IexQuote Object
+   * @throws IllegalArgumentException if ticker is invalid
+   */
   public IexQuote findIexQuoteByTicker(String ticker) {
     return marketDataDao.findById(ticker)
         .orElseThrow(()-> new IllegalArgumentException(ticker + "is invalid"));
@@ -45,13 +52,14 @@ public class QuoteService {
    * @throws org.springframework.dao.DataAccessException if unable to retrieve the data
    * @throws IllegalArgumentException for invalid input
    */
-  public void updateMarketData() {
+  public List<Quote> updateMarketData() {
     List<Quote> quotes = quoteDao.findAll();
     quotes.forEach(q -> {
       IexQuote iexQuote = marketDataDao.findById(q.getId()).get();
       Quote quote = buildQuoteFromIexQuote(iexQuote);
       quoteDao.save(quote);
     });
+    return quotes;
   }
 
   /**
@@ -91,6 +99,9 @@ public class QuoteService {
     return quotes;
   }
 
+  /**
+   * Helper method
+   */
   public Quote saveQuote(String ticker) {
     IexQuote iexQuote = findIexQuoteByTicker(ticker);
     Quote quote = buildQuoteFromIexQuote(iexQuote);
@@ -105,6 +116,10 @@ public class QuoteService {
     return quoteDao.save(quote);
   }
 
+  /**
+   * Find all quotes from the quote table
+   * @return a list of quotes
+   */
   public List<Quote> findAllQuotes() {
     return quoteDao.findAll();
   }
