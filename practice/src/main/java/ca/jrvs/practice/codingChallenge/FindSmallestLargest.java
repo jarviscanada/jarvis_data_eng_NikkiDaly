@@ -30,8 +30,8 @@ public class FindSmallestLargest {
 
   /**
    * Description : Returns the largest and smallest number in the array using stream API
-   * Big O : 
-   * Justification :
+   * Big O : O(n)
+   * Justification : Stream uses iteration, same as for loop
    */
   public int[] secondMethod(Integer[] nums) {
     Integer smallest = Arrays.stream(nums).min(Integer::compare).get();
@@ -40,10 +40,9 @@ public class FindSmallestLargest {
   }
 
   /**
-   * Description :
-   * Big O :
-   * Justification :
-   * @param nums
+   * Description : Returns the largest and smallest number in the array using Java collections
+   * Big O : O(n)
+   * Justification : Collections has O(n) time for finding max of a list
    */
   public int[] thirdMethod(Integer[] nums) {
     List<Integer> list = Arrays.asList(nums);
