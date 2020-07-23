@@ -2,6 +2,7 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Position;
 import ca.jrvs.apps.trading.model.domain.Quote;
+import java.util.List;
 import java.util.Optional;
 import javax.sql.DataSource;
 import javax.swing.text.html.Option;
@@ -43,21 +44,16 @@ public class PositionDao  {
     return entity;
   }
 
-  public Optional<Position> findByTicker(String ticker) {
-    Optional<Position> entity = Optional.empty();
-    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ACCOUNT_ID + "=?";
-    try {
-      entity = Optional.ofNullable((Position) jdbcTemplate
-          .queryForObject(selectSql, BeanPropertyRowMapper.newInstance(Position.class), ticker));
-    }catch (IncorrectResultSizeDataAccessException e) {
-      logger.debug("Unable to find ticker :" + ticker, e);
-    }
-    return entity;
-    }
-
-  public Iterable<Position> findAll() {
+  public List<Position> findAll() {
     String selectSql = "SELECT * FROM " + TABLE_NAME;
     return jdbcTemplate.query(selectSql, BeanPropertyRowMapper.newInstance(Position.class));
+  }
+
+  public List<Position> findAllByAccountId(Integer accountId) {
+    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ACCOUNT_ID + "=?";
+    List<Position> positions = jdbcTemplate
+        .query(selectSql, BeanPropertyRowMapper.newInstance(Position.class), accountId);
+    return positions;
   }
 
   public long count() {

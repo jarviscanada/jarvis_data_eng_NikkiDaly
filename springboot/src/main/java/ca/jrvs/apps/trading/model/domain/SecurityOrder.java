@@ -1,8 +1,11 @@
 package ca.jrvs.apps.trading.model.domain;
 
+import java.util.Objects;
+
 public class SecurityOrder implements Entity<Integer> {
 
   private Integer id;
+  private Integer accountId;
   private String status;
   private String ticker;
   private Integer size;
@@ -15,8 +18,16 @@ public class SecurityOrder implements Entity<Integer> {
   }
 
   @Override
-  public void setId(Integer integer) {
+  public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Integer getAccountId() {
+    return accountId;
+  }
+
+  public void setAccountId(Integer accountId) {
+    this.accountId = accountId;
   }
 
   public String getStatus() {
@@ -57,5 +68,28 @@ public class SecurityOrder implements Entity<Integer> {
 
   public void setNotes(String notes) {
     this.notes = notes;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    SecurityOrder that = (SecurityOrder) o;
+    return Objects.equals(id, that.id) &&
+        Objects.equals(accountId, that.accountId) &&
+        Objects.equals(status, that.status) &&
+        Objects.equals(ticker, that.ticker) &&
+        Objects.equals(size, that.size) &&
+        Objects.equals(price, that.price) &&
+        Objects.equals(notes, that.notes);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, accountId, status, ticker, size, price, notes);
   }
 }

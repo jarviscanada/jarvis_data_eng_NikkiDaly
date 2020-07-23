@@ -2,10 +2,12 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
 
+import java.util.List;
 import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,8 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder> {
 
   private final String TABLE_NAME = "security_order";
   private final String ID_COLUMN = "id";
+  private final String ACCOUNT_ID = "account_id";
+
 
   private JdbcTemplate jdbcTemplate;
   private SimpleJdbcInsert simpleJdbcInsert;
@@ -55,7 +59,21 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder> {
 
   @Override
   public int updateOne(SecurityOrder entity) {
-    throw new UnsupportedOperationException("Not implemented");
+    String updateSql = "UPDATE " + TABLE_NAME + " SET account_id=?, status=?, ticker=?, size=?, "
+        + "price=?, notes=? WHERE " + ID_COLUMN + "=?";
+    return jdbcTemplate.update(updateSql, getUpdateValues(entity));
+  }
+
+  private Object getUpdateValues(SecurityOrder entity) {
+    Object[] updateValues = new Object[7];
+    updateValues[0] = entity.getAccountId();
+    updateValues[1] = entity.getStatus();
+    updateValues[2] = entity.getTicker();
+    updateValues[3] = entity.getSize();
+    updateValues[4] = entity.getPrice();
+    updateValues[5] = entity.getNotes();
+    updateValues[6] = entity.getId();
+    return updateValues;
   }
 
   @Override
@@ -72,5 +90,12 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder> {
   @Override
   public void deleteAll(Iterable<? extends SecurityOrder> iterable) {
     throw new UnsupportedOperationException("Not implemented");
+  }
+
+  public List<SecurityOrder> findAllByAccountId(Integer accountId) {
+    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ACCOUNT_ID + "=?";
+    List<SecurityOrder> orders = jdbcTemplate
+        .query(selectSql, BeanPropertyRowMapper.newInstance(SecurityOrder.class), accountId);
+    return orders;
   }
 }
