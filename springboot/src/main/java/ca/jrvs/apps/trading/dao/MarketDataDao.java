@@ -103,7 +103,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
     try {
       jsonObject = new JSONObject(response.get());
     } catch (JSONException e) {
-      e.printStackTrace();
+      logger.error("Unable to create json object");
     }
     for (String ticker : tickers) {
       if (!jsonObject.has(ticker)) {
