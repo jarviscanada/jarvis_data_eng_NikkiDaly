@@ -147,9 +147,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   @Override
   public List<Quote> findAll() {
     String selectSql = "SELECT * FROM " + TABLE_NAME;
-    List<Quote> quotes =  jdbcTemplate
-        .query(selectSql, BeanPropertyRowMapper.newInstance(Quote.class));
-    return quotes;
+    return jdbcTemplate.query(selectSql, BeanPropertyRowMapper.newInstance(Quote.class));
   }
 
   @Override
