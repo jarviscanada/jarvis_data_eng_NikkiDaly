@@ -90,4 +90,16 @@ public class AccountDao extends JdbcCrudDao<Account> {
     throw new UnsupportedOperationException("Not implemented");
   }
 
+  public Optional<Account> findByTraderId(int traderId) {
+    Optional<Account> account = Optional.empty();
+    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + TRADER_ID + "=?";
+    try {
+      account = Optional.ofNullable(getJdbcTemplate().queryForObject(selectSql,
+          BeanPropertyRowMapper.newInstance(getEntityClass()), traderId));
+    } catch (IncorrectResultSizeDataAccessException ex) {
+      logger.error("Cannot find account with trader ID: " + traderId, ex);
+    }
+    return account;
+  }
+
 }

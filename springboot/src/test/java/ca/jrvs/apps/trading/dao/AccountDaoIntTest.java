@@ -49,11 +49,11 @@ public class AccountDaoIntTest {
     accountDao.save(savedAccount);
   }
 
-  /*@After
-  public void deleteOne() {
-    accountDao.delete(savedAccount);
-    traderDao.delete(savedTrader);
-  }*/
+  @After
+  public void deleteAll() {
+    accountDao.deleteAll();
+    traderDao.deleteById(savedTrader.getId());
+  }
 
   @Test
   public void saveAll() {
