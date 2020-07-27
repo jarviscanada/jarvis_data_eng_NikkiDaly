@@ -7,14 +7,18 @@ import ca.jrvs.apps.trading.dao.QuoteDao;
 import ca.jrvs.apps.trading.dao.SecurityOrderDao;
 import ca.jrvs.apps.trading.dto.MarketOrderDto;
 import ca.jrvs.apps.trading.model.domain.Account;
+import ca.jrvs.apps.trading.model.domain.Position;
 import ca.jrvs.apps.trading.model.domain.Quote;
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
 import com.sun.org.apache.xpath.internal.operations.Quo;
+import java.util.IllegalFormatFlagsException;
 import javax.transaction.Transactional;
 import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,16 +42,7 @@ public class OrderService {
   }
 
   /**
-   * Execute a merket order
-   *
-   * - validate the order (e.g. size, and ticker)
-   * - Create a securityOrder (for security_order table)
-   * - Handle buy or sell order
-   *    - buy order: check account balance (calls helper method)
-   *    - sell order: check position for the ticker/symbol (call helper method)
-   * - Save and return securityOrder
-   *
-   * Note: you will need to create some helper methods (protected or private)
+   * Execute a market order
    *
    * @param orderDto market order
    * @return SecurityOrder from security_order table
@@ -55,26 +50,75 @@ public class OrderService {
    * @throws IllegalArgumentException for invalid input
    */
   public SecurityOrder executeMarketOrder(MarketOrderDto orderDto) {
-    return null;
+    if (orderDto == null || orderDto.getAccountId() == null || orderDto.getTicker() == null
+        || orderDto.getSize() == null) {
+      throw new IllegalArgumentException("Error: MarketOrderDto is null, or contains null values");
+    }
+    if (!quoteDao.existsById(orderDto.getTicker())) {
+      throw new DataRetrievalFailureException("Error: Unable to find quote with ticker:" + orderDto.getTicker());
+    }
+    Account account = new Account();
+    try {
+      account = accountDao.findById(orderDto.getAccountId()).get();
+    } catch (DataAccessException ex) {
+      logger.error("Unable to get account get from DAO for account id:" + orderDto.getAccountId());
+    }
+    SecurityOrder securityOrder = new SecurityOrder();
+    securityOrder.setAccountId(account.getId());
+    securityOrder.setTicker(orderDto.getTicker());
+    securityOrder.setPrice(0.0d);
+    securityOrder.setSize(orderDto.getSize());
+    securityOrder.setStatus("PENDING");
+    securityOrderDao.save(securityOrder);
+    if (securityOrder.getSize() < 0) {
+      handleSellMarketOrder(orderDto, securityOrder, account);
+    } else if (securityOrder.getSize() > 0) {
+      handleBuyMarketOrder(orderDto, securityOrder, account);
+    } else {
+      throw new IllegalArgumentException("Error: order size cannot be 0");
+    }
+    return securityOrder;
   }
 
   /**
    * Helper method that executes a buy order
-   * @param marketDataDao user order
+   * @param marketOrderDto user order
    * @param securityOrder to be saved in data database
    * @param account
    */
-  protected void handleBuyMarketOrder(MarketDataDao marketDataDao, SecurityOrder securityOrder, Account account) {
-
+  protected void handleBuyMarketOrder(MarketOrderDto marketOrderDto, SecurityOrder securityOrder, Account account) {
+    Quote quote = quoteDao.findById(marketOrderDto.getTicker()).get();
+    securityOrder.setPrice(quote.getAskPrice());
+    double price = securityOrder.getSize()*securityOrder.getPrice();
+    if (account.getAmount() < price) {
+      securityOrder.setStatus("CANCELLED");
+      securityOrder.setNotes("Insufficient fund. Order amount:" + price);
+    } else {
+      securityOrder.setStatus("FILLED");
+      account.setAmount(account.getAmount() - price);
+      accountDao.save(account);
+    }
+    securityOrderDao.save(securityOrder);
   }
 
   /**
    * Helper method that executes a sell order
-   * @param marketDataDao user order
+   * @param marketOrderDto user order
    * @param securityOrder to be saved in the database
    * @param account
    */
-  protected void handleSellMarketOrder(MarketDataDao marketDataDao, SecurityOrder securityOrder, Account account) {
-
+  protected void handleSellMarketOrder(MarketOrderDto marketOrderDto, SecurityOrder securityOrder, Account account) {
+    Quote quote = quoteDao.findById(marketOrderDto.getTicker()).get();
+    securityOrder.setPrice(quote.getBidPrice());
+    Position position = positionDao.findById(account.getId(), marketOrderDto.getTicker()).get();
+    if (position.getPosition() - securityOrder.getSize() < 0) {
+      securityOrder.setStatus("CANCELLED");
+      securityOrder.setNotes("Insufficient position.");
+    } else {
+      securityOrder.setStatus("FILLED");
+      account.setAmount(account.getAmount() + securityOrder.getSize()*securityOrder.getPrice());
+      accountDao.save(account);
+    }
+    securityOrderDao.save(securityOrder);
   }
 }
