@@ -1,20 +1,17 @@
 package ca.jrvs.apps.trading.dao;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Quote;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -32,9 +29,9 @@ public class QuoteDaoIntTest {
   public void insertOne() {
     savedQuote = new Quote();
     savedQuote.setAskPrice(10d);
-    savedQuote.setAskSize((long)10);
+    savedQuote.setAskSize((long) 10);
     savedQuote.setBidPrice(10.2d);
-    savedQuote.setBidSize((long)10);
+    savedQuote.setBidSize((long) 10);
     savedQuote.setId("AAPL");
     savedQuote.setLastPrice(10.1d);
     quoteDao.save(savedQuote);
@@ -49,9 +46,9 @@ public class QuoteDaoIntTest {
   public void testSave() {
     Quote testQuote = new Quote();
     testQuote.setAskPrice(11d);
-    testQuote.setAskSize((long)11);
+    testQuote.setAskSize((long) 11);
     testQuote.setBidPrice(11d);
-    testQuote.setBidSize((long)11);
+    testQuote.setBidSize((long) 11);
     testQuote.setId("GOOGL");
     testQuote.setLastPrice(11.1d);
     quoteDao.save(testQuote);
@@ -63,17 +60,17 @@ public class QuoteDaoIntTest {
   public void testSaveAll() {
     Quote testQuoteA = new Quote();
     testQuoteA.setAskPrice(11d);
-    testQuoteA.setAskSize((long)11);
+    testQuoteA.setAskSize((long) 11);
     testQuoteA.setBidPrice(11d);
-    testQuoteA.setBidSize((long)11);
+    testQuoteA.setBidSize((long) 11);
     testQuoteA.setId("GOOGL");
     testQuoteA.setLastPrice(11.1d);
 
     Quote testQuoteB = new Quote();
     testQuoteB.setAskPrice(11d);
-    testQuoteB.setAskSize((long)11);
+    testQuoteB.setAskSize((long) 11);
     testQuoteB.setBidPrice(11d);
-    testQuoteB.setBidSize((long)11);
+    testQuoteB.setBidSize((long) 11);
     testQuoteB.setId("FB");
     testQuoteB.setLastPrice(11.1d);
     quoteDao.saveAll(Arrays.asList(testQuoteA, testQuoteB));

@@ -17,8 +17,8 @@ public class TraderDao extends JdbcCrudDao<Trader> {
   private final String TABLE_NAME = "trader";
   private final String ID_COLUMN = "id";
 
-  private JdbcTemplate jdbcTemplate;
-  private SimpleJdbcInsert simpleJdbcInsert;
+  private final JdbcTemplate jdbcTemplate;
+  private final SimpleJdbcInsert simpleJdbcInsert;
 
   @Autowired
   public TraderDao(DataSource dataSource) {

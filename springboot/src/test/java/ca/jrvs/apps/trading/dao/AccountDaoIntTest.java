@@ -70,15 +70,18 @@ public class AccountDaoIntTest {
     savedAccounts.add(accountB);
 
     accountDao.saveAll(Arrays.asList(accountA, accountB));
-    assertEquals(savedAccounts.get(0), accountDao.findAllById(Arrays.asList(savedAccounts.get(0).getId())).get(0));
-    assertEquals(savedAccounts.get(1), accountDao.findAllById(Arrays.asList(savedAccounts.get(1).getId())).get(0));
+    assertEquals(savedAccounts.get(0),
+        accountDao.findAllById(Arrays.asList(savedAccounts.get(0).getId())).get(0));
+    assertEquals(savedAccounts.get(1),
+        accountDao.findAllById(Arrays.asList(savedAccounts.get(1).getId())).get(0));
   }
 
   @Test
   public void findAllById() {
-    List<Account> accounts = Lists.newArrayList(accountDao.findAllById(Arrays.asList(savedAccount.getId())));
-    assertEquals(1,accounts.size());
-    assertEquals(savedAccount.getAmount(),accounts.get(0).getAmount());
+    List<Account> accounts = Lists
+        .newArrayList(accountDao.findAllById(Arrays.asList(savedAccount.getId())));
+    assertEquals(1, accounts.size());
+    assertEquals(savedAccount.getAmount(), accounts.get(0).getAmount());
   }
 
 }

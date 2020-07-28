@@ -4,7 +4,6 @@ import ca.jrvs.apps.trading.model.domain.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataRetrievalFailureException;
@@ -33,11 +32,12 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
 
   /**
    * Save an entity and update auto-generated integer ID
+   *
    * @param entity to be saved
    * @return saved entity
    */
   @Override
-  public <S extends T>S save(S entity) {
+  public <S extends T> S save(S entity) {
     if (existsById(entity.getId())) {
       if (updateOne(entity) != 1) {
         throw new DataRetrievalFailureException("Unable to update quote");
@@ -62,7 +62,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     Optional<T> entity = Optional.empty();
     String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
     try {
-      entity = Optional.ofNullable((T)getJdbcTemplate()
+      entity = Optional.ofNullable(getJdbcTemplate()
           .queryForObject(selectSql, BeanPropertyRowMapper.newInstance(getEntityClass()), id));
     } catch (IncorrectResultSizeDataAccessException ex) {
       logger.debug("Can't find trader id:" + id, ex);
@@ -81,10 +81,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     } catch (EmptyResultDataAccessException e) {
       logger.debug("Can't find entity id:" + id, e);
     }
-    if (t != null) {
-      return true;
-    }
-    return false;
+    return t != null;
   }
 
   @Override

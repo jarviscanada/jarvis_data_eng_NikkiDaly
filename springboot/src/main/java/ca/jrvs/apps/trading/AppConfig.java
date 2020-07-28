@@ -1,6 +1,5 @@
 package ca.jrvs.apps.trading;
 
-import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-  private Logger logger = LoggerFactory.getLogger(AppConfig.class);
+  private final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
   @Bean
   public MarketDataConfig marketDataConfig() {
@@ -26,7 +25,10 @@ public class AppConfig {
 
   @Bean
   public HttpClientConnectionManager httpClientConnectionManager() {
-    return new PoolingHttpClientConnectionManager();
+    PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+    cm.setMaxTotal(50);
+    cm.setDefaultMaxPerRoute(50);
+    return cm;
   }
 
   @Bean
@@ -34,7 +36,6 @@ public class AppConfig {
     String url = System.getenv("PSQL_URL");
     String user = System.getenv("PSQL_USER");
     String password = System.getenv("PSQL_PASSWORD");
-    //Never log your credentials/secrets. Use debugger instead
     BasicDataSource basicDataSource = new BasicDataSource();
     basicDataSource.setUrl(url);
     basicDataSource.setUsername(user);

@@ -17,12 +17,12 @@ public class AccountDao extends JdbcCrudDao<Account> {
 
   private static final Logger logger = LoggerFactory.getLogger(AccountDao.class);
 
-  private static String TABLE_NAME = "account";
-  private static String ID_COLUMN = "id";
-  private static String TRADER_ID = "trader_id";
+  private static final String TABLE_NAME = "account";
+  private static final String ID_COLUMN = "id";
+  private static final String TRADER_ID = "trader_id";
 
-  private JdbcTemplate jdbcTemplate;
-  private SimpleJdbcInsert simpleJdbcInsert;
+  private final JdbcTemplate jdbcTemplate;
+  private final SimpleJdbcInsert simpleJdbcInsert;
 
   @Autowired
   public AccountDao(DataSource dataSource) {
@@ -63,7 +63,7 @@ public class AccountDao extends JdbcCrudDao<Account> {
    */
   @Override
   public int updateOne(Account entity) {
-    String updateSql = "UPDATE " + TABLE_NAME + " SET amount=? WHERE " +ID_COLUMN + "=?";
+    String updateSql = "UPDATE " + TABLE_NAME + " SET amount=? WHERE " + ID_COLUMN + "=?";
     return jdbcTemplate.update(updateSql, getUpdateValues(entity));
   }
 

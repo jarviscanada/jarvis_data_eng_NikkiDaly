@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = {"ca.jrvs.apps.trading.dao", "ca.jrvs.apps.trading.service"})
 public class TestConfig {
 
-  private Logger logger = LoggerFactory.getLogger(AppConfig.class);
+  private final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
   @Bean
   public MarketDataConfig marketDataConfig() {

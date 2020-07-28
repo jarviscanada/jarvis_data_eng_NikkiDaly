@@ -6,8 +6,6 @@ import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.matches;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import ca.jrvs.apps.trading.dao.AccountDao;
@@ -19,7 +17,6 @@ import ca.jrvs.apps.trading.model.domain.Account;
 import ca.jrvs.apps.trading.model.domain.Position;
 import ca.jrvs.apps.trading.model.domain.Quote;
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
-import java.security.Security;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +25,6 @@ import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.dao.DataRetrievalFailureException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceTest {

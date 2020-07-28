@@ -3,7 +3,6 @@ package ca.jrvs.apps.trading.dao;
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.util.JsonUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,14 +31,14 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
   private static final String IEX_BATCH_PATH = "stock/market/batch?symbols=%s&types=quote&token=";
   private final String IEX_BATCH_URL;
 
-  private Logger logger = LoggerFactory.getLogger(MarketDataDao.class);
-  private HttpClientConnectionManager httpClientConnectionManager;
+  private final Logger logger = LoggerFactory.getLogger(MarketDataDao.class);
+  private final HttpClientConnectionManager httpClientConnectionManager;
 
   @Autowired
   public MarketDataDao(HttpClientConnectionManager httpClientConnectionManager,
       MarketDataConfig marketDataConfig) {
     this.httpClientConnectionManager = httpClientConnectionManager;
-    IEX_BATCH_URL = marketDataConfig.getHost() +  IEX_BATCH_PATH + marketDataConfig.getToken();
+    IEX_BATCH_URL = marketDataConfig.getHost() + IEX_BATCH_PATH + marketDataConfig.getToken();
   }
 
 
@@ -57,7 +56,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
    * Get an IexQuote (helper method which class findAllById)
    *
    * @param ticker
-   * @throws IllegalArgumentException if a given ticker is invalid
+   * @throws IllegalArgumentException      if a given ticker is invalid
    * @throws DataRetrievalFailureException if HTTP request failed
    */
   @Override
@@ -87,8 +86,9 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
 
   /**
    * Get quotes from IEX
+   *
    * @param tickers is a ist of tickers
-   * @throws IllegalArgumentException if ticker is invalid or tickers is emtpy
+   * @throws IllegalArgumentException      if ticker is invalid or tickers is emtpy
    * @throws DataRetrievalFailureException if HTTP request failed
    */
   @Override
@@ -110,7 +110,9 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
         throw new IllegalArgumentException("Ticker value is invalid");
       }
       try {
-        quotes.add(JsonUtil.toObjectFromJson(jsonObject.getJSONObject(ticker).getJSONObject("quote").toString() , IexQuote.class));
+        quotes.add(JsonUtil
+            .toObjectFromJson(jsonObject.getJSONObject(ticker).getJSONObject("quote").toString(),
+                IexQuote.class));
       } catch (IOException | JSONException ex) {
         logger.error("Failed to convert JSON String to object", ex);
       }
@@ -145,7 +147,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
 
   /**
    * Execute a get and return http/entity body as a String
-   *
+   * <p>
    * Tip: Use EntitiyUtils.toString to process HTTP entity
    *
    * @param url resource url
@@ -172,6 +174,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
 
   /**
    * Borrow a HTTP Client from the httpClientConnectionManager
+   *
    * @return a httpClient
    */
   private CloseableHttpClient getHttpClient() {

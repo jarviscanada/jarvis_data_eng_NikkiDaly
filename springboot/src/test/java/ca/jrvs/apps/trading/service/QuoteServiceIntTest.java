@@ -11,8 +11,6 @@ import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.model.domain.Quote;
 import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
-import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +21,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={TestConfig.class})
+@SpringBootTest(classes = {TestConfig.class})
 @Sql({"classpath:schema.sql"})
 public class QuoteServiceIntTest {
 
@@ -40,9 +38,9 @@ public class QuoteServiceIntTest {
     quoteDao.deleteAll();
     savedQuote = new Quote();
     savedQuote.setAskPrice(10d);
-    savedQuote.setAskSize((long)10);
+    savedQuote.setAskSize((long) 10);
     savedQuote.setBidPrice(10.2d);
-    savedQuote.setBidSize((long)10);
+    savedQuote.setBidSize((long) 10);
     savedQuote.setId("AAPL");
     savedQuote.setLastPrice(10.1d);
     quoteDao.save(savedQuote);
@@ -88,9 +86,9 @@ public class QuoteServiceIntTest {
   public void saveQuote() {
     Quote quote = new Quote();
     quote.setAskPrice(10d);
-    quote.setAskSize((long)10);
+    quote.setAskSize((long) 10);
     quote.setBidPrice(10.2d);
-    quote.setBidSize((long)10);
+    quote.setBidSize((long) 10);
     quote.setId("FB");
     quote.setLastPrice(10.1d);
     quoteService.saveQuote(quote);

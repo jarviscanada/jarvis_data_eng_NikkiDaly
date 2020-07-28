@@ -7,7 +7,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import javax.persistence.OrderColumn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping
 public class OrderController {
 
-  private OrderService orderService;
+  private final OrderService orderService;
 
   @Autowired
   public OrderController(OrderService orderService) {
@@ -31,7 +30,7 @@ public class OrderController {
   }
 
   @ApiOperation(value = "Submit a market order",
-  notes = "Submit a merket order")
+      notes = "Submit a merket order")
   @ApiResponses(value = {
       @ApiResponse(code = 404, message = "accountId or ticker is not found"),
       @ApiResponse(code = 400, message = "Unable to deposit due to user input")})

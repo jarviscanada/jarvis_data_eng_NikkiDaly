@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TraderAccountService {
 
-  private TraderDao traderDao;
-  private AccountDao accountDao;
-  private PositionDao positionDao;
-  private SecurityOrderDao securityOrderDao;
+  private final TraderDao traderDao;
+  private final AccountDao accountDao;
+  private final PositionDao positionDao;
+  private final SecurityOrderDao securityOrderDao;
 
   @Autowired
   public TraderAccountService(TraderDao traderDao, AccountDao accountDao,
@@ -39,7 +39,7 @@ public class TraderAccountService {
    */
   public TraderAccountView createTraderAndAccount(Trader trader) {
     if (trader.getFirstName() == null || trader.getLastName() == null || trader.getDob() == null ||
-    trader.getCountry() == null || trader.getEmail() == null) {
+        trader.getCountry() == null || trader.getEmail() == null) {
       throw new IllegalArgumentException("Trader cannot have null fields");
     }
     Trader savedTrader = traderDao.save(trader);
@@ -72,7 +72,7 @@ public class TraderAccountService {
 
     List<Position> positions = positionDao.findAllByAccountId(traderAccount.getId());
     if (positions.size() > 0) {
-      throw new IllegalArgumentException("Trader with id "+ traderId + "has open positions");
+      throw new IllegalArgumentException("Trader with id " + traderId + "has open positions");
     }
     List<SecurityOrder> securityOrders = securityOrderDao.findAllByAccountId(traderAccount.getId());
     securityOrders.forEach(order -> securityOrderDao.deleteById(order.getId()));
@@ -84,9 +84,10 @@ public class TraderAccountService {
    * Deposit a fund to an account by traderId
    *
    * @param traderId must not be null
-   * @param fund must be greater than 0
+   * @param fund     must be greater than 0
    * @return updated Account
-   * @throws IllegalArgumentException if traderId is null or not found, and fund is less than or equal to 0
+   * @throws IllegalArgumentException if traderId is null or not found, and fund is less than or
+   *                                  equal to 0
    */
   public Account deposit(Integer traderId, Double fund) {
     if (traderId == null) {
@@ -110,9 +111,10 @@ public class TraderAccountService {
    * Withdraw a fund to an account by traderId
    *
    * @param traderId trader ID
-   * @param fund amount cannot be 0
+   * @param fund     amount cannot be 0
    * @return updated Account
-   * @throws IllegalArgumentException if traderId is null or not found, and fund is less than or equal to 0
+   * @throws IllegalArgumentException if traderId is null or not found, and fund is less than or
+   *                                  equal to 0
    */
   public Account withdraw(Integer traderId, Double fund) {
     if (traderId == null) {

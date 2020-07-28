@@ -7,10 +7,8 @@ import static org.junit.Assert.fail;
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.dao.AccountDao;
 import ca.jrvs.apps.trading.dao.TraderDao;
-import ca.jrvs.apps.trading.model.domain.Account;
 import ca.jrvs.apps.trading.model.domain.Trader;
 import ca.jrvs.apps.trading.model.view.TraderAccountView;
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
@@ -74,7 +72,8 @@ public class TraderAccountServiceIntTest {
   @Test
   public void deposit() {
     traderAccountService.deposit(savedView.getTrader().getId(), 100.0);
-    assertEquals((Double)100.0, accountDao.findById(savedView.getAccount().getId()).get().getAmount());
+    assertEquals((Double) 100.0,
+        accountDao.findById(savedView.getAccount().getId()).get().getAmount());
     try {
       traderAccountService.deposit(null, 100.0);
       fail();
@@ -98,7 +97,8 @@ public class TraderAccountServiceIntTest {
   @Test
   public void withdraw() {
     traderAccountService.withdraw(savedView.getTrader().getId(), 100.0);
-    assertEquals((Double)(-100.0), accountDao.findById(savedView.getAccount().getId()).get().getAmount());
+    assertEquals((Double) (-100.0),
+        accountDao.findById(savedView.getAccount().getId()).get().getAmount());
     try {
       traderAccountService.withdraw(null, 100.0);
       fail();
