@@ -1,4 +1,4 @@
-Nikki Daly . Jarvis Consulting
+# Nikki Daly . Jarvis Consulting
 
 >
 >I am a recent graduate from McGill University where I received my Bachelor of Engineering, majoring in Computer Engineering. I completed several internships throughout the course of my studies, which allowed me to gain professional experience as a software developer. First, I completed two 4-month internships with ScribbleLive, a content marketing software company, where I worked as a developer on their live-blogging software. Next, I worked at RockMass Technologies, a startup specializing in mining technology, completing another 4-month internship where I worked on designing the architecture and UI of their mapping device. My last internship was with Citibank Canada as a Technical Analyst on their Data and Regulations team. I became fascinated in learning about Big Data and it's role in financial services which led me to apply as a Data Engineer with Jarvis Consulting. Currently I am looking for a placement where I can apply my knowledge and skills as well as grow as a Data Engineer both technically and professionally. 
@@ -17,8 +17,8 @@ Nikki Daly . Jarvis Consulting
 Project source code: [https://github.com/jarviscanada/jarvis_data_eng_NikkiDaly](https://github.com/jarviscanada/jarvis_data_eng_NikkiDaly)
 
 - **[Cluster Monitor](./linux_sql)**: Implemented a set of bash scripts that gather data on hardware specifications of nodes within the linux cluster, monitor their resource usage in real time, and store the data to a PSQL database maintained in a docker instance. 
-- **[Core Java Apps](./core_java)**: Developed a series of Java Applications: one which mimics the bash grep function, another which implements a series of DAO functions in a JDBC system, and a Twitter CLI app which leverages the Twitter API to post/search/delete tweets from the command line. 
-- **[SpringBoot App](./springboot)**: Not started
+- **[Core Java Apps](./core_java)**: Developed a series of Java Applications: one which mimics the bash grep function, another which implements a series of DAO functions in a JDBC system, and a Twitter CLI app which leverages the Twitter API to post/search/delete tweets from the command line. The project utilized Maven for its dependency management and JUnit and Mockito for testing. 
+- **[SpringBoot App](./springboot)**: Developed a Spring boot trading application that simulates stock trading using a REST API. The application's architecture models a three-tiered microservice pattern and uses Spring boot along with Maven for its dependency management. The data is created from the app as well as pulled from the IEX Cloud and stored in a PSQL database. The application is dockerized with a container to run the app and another to handle the PSQL database server. 
 - **[Cloud & DevOps](./cloud_devops)**: Not started
 - **[Hadoop](./hadoop)**: Not started
 - **[Spark/Scala](./spark)**:  Not started
@@ -41,10 +41,6 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_NikkiDaly]
 
 **McGill University (2015-2020)**, Bachelor of Engineering, Computer Engineering
 
-- **Fully Integrated T-Stick:** Improved the development process for an integrated digital musical instrument (DMI) by developing a C++ based program hosted on a Raspberry Pi 3B+ which integrates the routing of audio and control signals passed in from the user through sensors on the instrument. 
+- **Fully Integrated T-Stick:** Improved the development process for an integrated digital musical instrument (DMI) by developing a C++ based program hosted on a Raspberry Pi 3B+ which integrates the routing of audio and control signals passed in from the user through a series of sensors embedded on the instrument. 
 
-- **Capture the Flag Robot:** Designed and built an autonomous robot using LeJOS (Java for LEGO Mindstorms) that could complete a course and play a game of capture the flag with another robot. 
-
-## Certificates & Awards & Activities
-
-- North American Irish Dance Champion
+- **Capture the Flag Robot:** Designed and built an autonomous robot using LeJOS (Java for LEGO Mindstorms) that could complete an obstacle course and play a game of capture the flag with another robot. 
