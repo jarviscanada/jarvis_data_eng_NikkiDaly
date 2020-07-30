@@ -1,8 +1,8 @@
 # Nikki Daly . Jarvis Consulting
 
->
->I am a recent graduate from McGill University where I received my Bachelor of Engineering, majoring in Computer Engineering. I completed several internships throughout the course of my studies, which allowed me to gain professional experience as a software developer. First, I completed two 4-month internships with ScribbleLive, a content marketing software company, where I worked as a developer on their live-blogging software. Next, I worked at RockMass Technologies, a startup specializing in mining technology, completing another 4-month internship where I worked on designing the architecture and UI of their mapping device. My last internship was with Citibank Canada as a Technical Analyst on their Data and Regulations team. I became fascinated in learning about Big Data and it's role in financial services which led me to apply as a Data Engineer with Jarvis Consulting. Currently I am looking for a placement where I can apply my knowledge and skills as well as grow as a Data Engineer both technically and professionally. 
->  
+
+I am a recent graduate from McGill University where I received my Bachelor of Engineering, majoring in Computer Engineering. I completed several internships throughout the course of my studies, which allowed me to gain professional experience as a software developer. First, I completed two 4-month internships with ScribbleLive, a content marketing software company, where I worked as a developer on their live-blogging software. Next, I worked at RockMass Technologies, a startup specializing in mining technology, completing another 4-month internship where I worked on designing the architecture and UI of their mapping device. My last internship was with Citibank Canada as a Technical Analyst on their Data and Regulations team. I became fascinated in learning about Big Data and it's role in financial services which led me to apply as a Data Engineer with Jarvis Consulting. Currently I am looking for a placement where I can apply my knowledge and skills as well as grow as a Data Engineer both technically and professionally. 
+  
 
 ## Skills
 
