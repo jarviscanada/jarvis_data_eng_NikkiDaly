@@ -62,10 +62,10 @@ docker run --name trading-app-dev \
 -p 8080:8080 -t trading-app
 
 ```
-5. The API should now be accessible from http://localhost:8080
+5. The API should now be accessible from http://localhost:8080/swagger-ui.html
 
 ## Architecture
-![](assets/Trader App Architecture.png)
+![](assets/traderAppArchitecture.png)
 
 #### Controller Layer 
 The controller layer handles the HTTP requests and is responsible for controlling flow of application and its logic. 
@@ -132,5 +132,8 @@ on the openjdk:8-alpine image in order to run out actual Java application. The j
 and then copied into the container itself.  
 
 ## Improvements
-If you have more time, what would you improve?
-- at least 5 improvements
+1. Have the quotes in the database automatically update to match the data in the IEX cloud. 
+2. Include authentication check before allowing a user to modify the database. 
+3. Allow the trader to have multiple accounts. 
+4. Allow multiple orders and quotes to be accepted by the API call. 
+5. Build and design our own front-end UI. 
