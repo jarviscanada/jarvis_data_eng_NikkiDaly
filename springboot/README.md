@@ -126,6 +126,7 @@ This controller is used to get different views depending on the traderId passed 
 
 ## Docker Deployment
 ![](assets/Docker.png)
+
 Two docker images are used in this application, trading-psql and trading-app. The first of the two is used to run the instance of our psql 
 database. A schema.sql script is automatically run when the container is started to initialize the database tables. The second image is based
 on the openjdk:8-alpine image in order to run out actual Java application. The jar file is compiled from a separate container that runs Maven
