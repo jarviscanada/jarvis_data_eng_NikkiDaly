@@ -12,14 +12,12 @@ import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.jdbc.IncorrectResultSetColumnCountException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Repository
 public class QuoteDao implements CrudRepository<Quote, String> {
@@ -74,6 +72,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   /**
    * helper method that makes sql update value objects
+   *
    * @param quote to be updated
    * @return UPDATE_SQL values
    */
@@ -90,12 +89,13 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override
   public <S extends Quote> Iterable<S> saveAll(Iterable<S> quotes) {
-    quotes.forEach(quote->save(quote));
+    quotes.forEach(quote -> save(quote));
     return quotes;
   }
 
   /**
    * Find a quote by ticker
+   *
    * @param ticker name
    * @return quote or Optional.empty if not found
    */
@@ -142,14 +142,13 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   /**
    * return all quotes
+   *
    * @throws DataAccessException if failed to update
    */
   @Override
   public List<Quote> findAll() {
     String selectSql = "SELECT * FROM " + TABLE_NAME;
-    List<Quote> quotes =  jdbcTemplate
-        .query(selectSql, BeanPropertyRowMapper.newInstance(Quote.class));
-    return quotes;
+    return jdbcTemplate.query(selectSql, BeanPropertyRowMapper.newInstance(Quote.class));
   }
 
   @Override

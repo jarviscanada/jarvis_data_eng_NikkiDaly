@@ -4,7 +4,6 @@ import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.dao.QuoteDao;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.model.domain.Quote;
-import com.sun.org.apache.xpath.internal.operations.Quo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -12,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.awt.util.IdentityLinkedList;
 
 @Transactional
 @Service
@@ -20,8 +18,8 @@ public class QuoteService {
 
   private static final Logger logger = LoggerFactory.getLogger(QuoteService.class);
 
-  private QuoteDao quoteDao;
-  private MarketDataDao marketDataDao;
+  private final QuoteDao quoteDao;
+  private final MarketDataDao marketDataDao;
 
   @Autowired
   public QuoteService(QuoteDao quoteDao, MarketDataDao marketDataDao) {
@@ -38,19 +36,16 @@ public class QuoteService {
    */
   public IexQuote findIexQuoteByTicker(String ticker) {
     return marketDataDao.findById(ticker)
-        .orElseThrow(()-> new IllegalArgumentException(ticker + "is invalid"));
+        .orElseThrow(() -> new IllegalArgumentException(ticker + "is invalid"));
   }
 
   /**
-   * Update quote table against IEX source
-   * - get all quotes from the quote table
-   * - foreach ticker get iexQuote
-   * - convert iexQuote to quote entity
-   * - persist quote to db
+   * Update quote table against IEX source - get all quotes from the quote table - foreach ticker
+   * get iexQuote - convert iexQuote to quote entity - persist quote to db
    *
-   * @throws //ResourceNotFoundException if ticket is not found from IEX
+   * @throws //ResourceNotFoundException                 if ticket is not found from IEX
    * @throws org.springframework.dao.DataAccessException if unable to retrieve the data
-   * @throws IllegalArgumentException for invalid input
+   * @throws IllegalArgumentException                    for invalid input
    */
   public List<Quote> updateMarketData() {
     List<Quote> quotes = quoteDao.findAll();
@@ -63,9 +58,8 @@ public class QuoteService {
   }
 
   /**
-   * Helper method. Map an IEX quote to a Quote entity
-   * Note: 'iexQuote.getLatestPrice() == null' if the stock market is closed
-   * Make sure to set a default value for number field(s)
+   * Helper method. Map an IEX quote to a Quote entity Note: 'iexQuote.getLatestPrice() == null' if
+   * the stock market is closed Make sure to set a default value for number field(s)
    */
   protected static Quote buildQuoteFromIexQuote(IexQuote iexQuote) {
     Quote quote = new Quote();
@@ -74,16 +68,14 @@ public class QuoteService {
     quote.setAskPrice((iexQuote.getIexAskPrice() != null) ? iexQuote.getIexAskPrice() : -1);
     quote.setLastPrice((iexQuote.getLatestPrice() != null) ? iexQuote.getLatestPrice() : -1);
     quote.setBidPrice((iexQuote.getIexBidPrice() != null) ? iexQuote.getIexBidPrice() : -1);
-    quote.setBidSize((iexQuote.getIexBidSize()!= null) ? iexQuote.getIexBidSize() : -1);
+    quote.setBidSize((iexQuote.getIexBidSize() != null) ? iexQuote.getIexBidSize() : -1);
     return quote;
   }
 
   /**
    * Validate (against IEX) and save given tickers to a quote table
-   *
-   * - Get iexQuote(s)
-   * - convert iexQuote to Quote entity
-   * - persist the quote to db
+   * <p>
+   * - Get iexQuote(s) - convert iexQuote to Quote entity - persist the quote to db
    *
    * @throws IllegalArgumentException if ticker is not found from IEX
    */
@@ -110,6 +102,7 @@ public class QuoteService {
 
   /**
    * Update a given quote to quote table without validation
+   *
    * @param quote entity
    */
   public Quote saveQuote(Quote quote) {
@@ -118,6 +111,7 @@ public class QuoteService {
 
   /**
    * Find all quotes from the quote table
+   *
    * @return a list of quotes
    */
   public List<Quote> findAllQuotes() {
