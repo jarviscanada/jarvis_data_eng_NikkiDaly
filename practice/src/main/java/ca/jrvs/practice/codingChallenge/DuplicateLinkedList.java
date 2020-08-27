@@ -14,11 +14,12 @@ public class DuplicateLinkedList {
    * Big O : O(n)
    * Justification : Goes through list of nodes once
    */
+public class DuplicateLinkedList {
   public void removeDuplicates(Node head) {
     Node node = head;
     Node prevNode = null;
     Set<Object> set = new HashSet<>();
-    while (node != null) {
+    while (node != null && node.next != null) {
       if(!set.add(node.element)){
         prevNode.next = node.next;
       } else{

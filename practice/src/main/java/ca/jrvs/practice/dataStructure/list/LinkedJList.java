@@ -10,6 +10,8 @@ public class LinkedJList<E> implements JList<E> {
 
     public Node(E element) {
       this.element = element;
+      this.next = null;
+      this.previous = null;
     }
   }
 

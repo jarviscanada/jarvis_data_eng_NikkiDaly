@@ -1,7 +1,6 @@
 package ca.jrvs.practice.codingChallenge;
 
 import static org.junit.Assert.assertEquals;
-
 import ca.jrvs.practice.dataStructure.list.JList;
 import ca.jrvs.practice.dataStructure.list.LinkedJList;
 import ca.jrvs.practice.dataStructure.list.LinkedJList.Node;
