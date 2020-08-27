@@ -8,7 +8,7 @@ I am a recent graduate from McGill University where I received my Bachelor of En
 
 **Competent:** Python, C, C++, Node.js, SAS
 
-**Familiar:** React, Angular, Matlab
+**Familiar:** React, Matlab
 
 ## Development Projects
 
