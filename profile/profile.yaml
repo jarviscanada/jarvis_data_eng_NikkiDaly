@@ -1,0 +1,123 @@
+# Preffered name (Characters only)
+name: "Nikki Daly"
+# Your github repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_NikkiDaly
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary: I am a recent graduate from McGill University where I received my Bachelor of Engineering, majoring in Computer Engineering. I completed several internships throughout the course of my studies, which allowed me to gain professional experience as a software developer. First, I completed two 4-month internships with ScribbleLive, a content marketing software company, where I worked as a developer on their live-blogging software. Next, I worked at RockMass Technologies, a startup specializing in mining technology, completing another 4-month internship where I worked on designing the architecture and UI of their mapping device. My last internship was with Citibank Canada as a Technical Analyst on their Data and Regulations team. I became fascinated in learning about Big Data and it's role in financial services which led me to apply as a Data Engineer with Jarvis Consulting. Currently I am looking for a placement where I can apply my knowledge and skills as well as grow as a Data Engineer both technically and professionally.
+
+# Group your skills by level.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Linux/Bash
+    - RDBMS/SQL
+    - Agile/Scrum
+    - Git
+  # At least 5 skills
+  competent:
+    - Javascript
+    - Python
+    - C
+    - C++
+    - Node.js
+    - SAS
+    - HTML
+    - CSS
+  # At least 5 skills
+  familiar:
+    - React
+    - Angular
+    - Matlab
+    - Django
+    - C#
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programing langauge, libraries, algorithms, hardwards, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Implemented a set of bash scripts that gather data on hardware specifications of nodes within the linux cluster, monitor their resource usage in real time, and store the data to a PSQL database maintained in a docker instance."
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - "Twitter App: Developed a Twitter CLI application that leverages the Twitter API to allow users to post, search and delete tweets from the command line."
+      - "JDBC App: Created a JDBC application that implements DAO's in a JDBC system. "
+      - "Grep App: Implemented an application that emulates the Linux bash grep function to search for a matching regex pattern in a directory."
+  - name: "Springboot App"
+    git_url: "/springboot"
+    description: "Developed a SpringBoot trading application that simulates stock trading using a REST API. The application's architecture models a three-tiered microservice pattern and uses Spring boot along with Maven for its dependency management. The data is created from the app as well as pulled from the IEX Cloud and stored in a PSQL database. The application is dockerized with a container to run the app and another to handle the PSQL database server. It also uses Mockito and Junit for testing."
+  - name: "Hadoop"
+    git_url: "/hadoop"
+    description: "Evaluated different Big Data tools, focusing on Hadoop components including: MapReduce, HDFS, and YARN. Provisioned a Hadoop cluster through the Google Cloud Platform Dataproc Service and ran sample queries on the wdi dataset using the Zeppelin notebook to test the functionality of Apache-Hive."
+  - name: "Spark"
+    git_url: "/spark"
+    description: "Not started."
+  - name: "Cloud/DevOps"
+    git_url: "/cloud_devops"
+    description: "Not started."
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+    #project name
+  - name: "Fully Integrated T-Stick"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Improved the development process for an integrated digital musical instrument (DMI) by developing a C++ based program hosted on a Raspberry Pi 3B+ which integrates the routing of audio and control signals passed in from the user through a series of sensors embedded on the instrument."
+  - name: "Capture the Flag Robot"
+    description: "Designed and built an autonomous robot using LeJOS (Java for LEGO Mindstorms) that could complete an obstacle course and play a game of capture the flag with another robot."
+#List of professional expereince
+#The job description allows hiring managers to understand your job and technologies you used(e.g. programing langauge, libraries, algorithms, hardwards, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional expereince rather than training.
+  - title: "Software Developer"
+    company: "Jarvis"
+    duration: "2020-present"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Implemented several projects gaining experience and exposure to a wide set of tools and technologies including Linux, SQL, core Java, SpringBoot, Cloud, Hadoop, and Spark/Scala."
+  - title: "Tutor"
+    company: "Paper Tutors"
+    duration: "2019-2020"
+    description: "Tutored multiple students between the ages of 10-18 in Math, Computer Science, and English through the company's online chat-based tutoring service, as well as edited essays through the online essay portal."
+  - title: "Technical Analyst Intern"
+    company: "Citibank Canada"
+    duration: "2019-2019"
+    description: "Led the migration project to the new Jira environment for the Data and Regulation team leveraging the Jira REST API. Wrote SQL queries to collect and organize data to generate reports for business analysts."
+  - title: "Software Developer Intern"
+    company: "Rockmass Technologies"
+    duration: "2018-2018"
+    description: "Collaborated with a cross-functional team to design software architecture of a mapping device for mining technicians. Designed and implemented Javascript-based UI for the mapping device using Flask web framework."
+  - title: "Software Developer Intern"
+    company: "ScribbleLive"
+    duration: "2017-2017"
+    description: "Developed new and existing features on the company's live-blogging product using primarily Javascript for the consumer-facing end, and React for the client-facing end. Worked on Agile-based scrum team, participating in bi-weekly sprints."
+  - title: "Software Developer Intern"
+    company: "ScribbleLive"
+    duration: "2016-2016"
+    description: "Tested new and existing features on the company's live-blogging product using primarily Javascript for the consumer-facing end. Worked on Agile-based scrum team, participating in bi-weekly sprints."
+#List of edcuation
+education: 
+  - school_name: "McGill University"
+    duration: "2015-2020"
+    degree: "Bachelor of Engineering"
+    department: "Computer Engineering"
+    # optional
+    awards_achievements:
+  - school_name: "City University of Hong Kong, McGill Student Exchange Program"
+    duration: "2018-2018"
+    degree: "Bachelor of Engineering"
+    department: "Computer and Electrical Engineering"
+    # optional
+    awards_achievements:
+
+#Optional section
+others:
+  #category
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Competitive Irish Dancer 2001-2015"
