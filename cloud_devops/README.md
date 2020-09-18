@@ -36,4 +36,4 @@ environment.
 # Improvements
 1. Tighten security group rules.
 2. Make more useful Auto-scaling conditions for the application.
-3. Have Jenkins track the develop and master branches instead of feature and develop. 
+3. Have Jenkins detect new branches and create environments for them.  
