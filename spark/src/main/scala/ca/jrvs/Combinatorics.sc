@@ -1,4 +1,5 @@
 import scala.io.Source
+import scala.reflect.io.File
 
 /**
  * Count number of elements
@@ -73,12 +74,13 @@ val names = List("Amy", "Sam", "Eric", "Amy")
 val tuples = names.map(name => (name, countryMap.getOrElse(name, "n/a")))
 
 /**
- * Map question3:
  *
+ * Map question3:
  * count number of people by country. Use `n/a` if the name is not in the countryMap  using `countryMap` and `names`
  * e.g. res0: scala.collection.immutable.Map[String,Int] = Map(Canada -> 2, n/a -> 1, US -> 1)
  * hint: map(get_value_from_map) ; groupBy country; map to (country,count)
  */
+//TODO
 
 
 /**
@@ -95,7 +97,8 @@ val numberedName = names2.map(name => (name, names2.indexOf(name) + 1))
  * read file lines into a list
  * lines: List[String] = List(id,name,city, 1,amy,toronto, 2,bob,calgary, 3,chris,toronto, 4,dann,montreal)
  */
-//write you solution here
+val file = File("/home/centos/dev/jarvis_data_eng_Nikki/spark/src/main/resources/employees.csv")
+val fileLines = file.lines().toList
 
 
 /**
@@ -104,7 +107,16 @@ val numberedName = names2.map(name => (name, names2.indexOf(name) + 1))
  * Convert lines to a list of employees
  * e.g. employees: List[Employee] = List(Employee(1,amy,toronto), Employee(2,bob,calgary), Employee(3,chris,toronto), Employee(4,dann,montreal))
  */
-//write you solution here
+class Employee(var id: Int, var name: String, var city: String, var age: Int) {
+  def convertToString: String = s"Employee($id,$name,$city, $age)"
+}
+val employeeList = fileLines.drop(1).map(line => {
+  val split = line.split(",")
+  new Employee(split(0).toInt, split(1), split(2), split(3).toInt)
+})
+employeeList.map(x => {
+  x.convertToString
+})
 
 
 /**
@@ -117,7 +129,13 @@ val numberedName = names2.map(name => (name, names2.indexOf(name) + 1))
  * result:
  * upperCity: List[Employee] = List(Employee(1,amy,TORONTO,20), Employee(2,bob,CALGARY,19), Employee(3,chris,TORONTO,20), Employee(4,dann,MONTREAL,21), Employee(5,eric,TORONTO,22))
  */
-//write you solution here
+val uppercaseCity = fileLines.drop(1).map(line => {
+  val split = line.split(",")
+  new Employee(split(0).toInt, split(1), split(2).toUpperCase(), split(3).toInt)
+})
+uppercaseCity.map(x => {
+  x.convertToString
+})
 
 
 
@@ -132,7 +150,13 @@ val numberedName = names2.map(name => (name, names2.indexOf(name) + 1))
  * result:
  * res5: List[Employee] = List(Employee(1,amy,TORONTO,20), Employee(3,chris,TORONTO,20), Employee(5,eric,TORONTO,22))
  */
-//write you solution here
+val uppercaseToronto = fileLines.drop(1).map(line => {
+  val split = line.split(",")
+  new Employee(split(0).toInt, split(1), split(2).toUpperCase(), split(3).toInt)
+}).filter(employee => employee.city == "TORONTO")
+uppercaseToronto.map(x => {
+  x.convertToString
+})
 
 
 /**
@@ -147,7 +171,10 @@ val numberedName = names2.map(name => (name, names2.indexOf(name) + 1))
  * result:
  * cityNum: scala.collection.immutable.Map[String,Int] = Map(CALGARY -> 1, TORONTO -> 3, MONTREAL -> 1)
  */
-//write you solution here
+val cityNum = employeeList.foldLeft(Map.empty[String, Int])((cityMap, employee) => {
+  cityMap + (employee.city.toUpperCase -> (cityMap.getOrElse(employee.city.toUpperCase, 0) + 1))
+})
+println(cityNum.mkString(", "))
 
 
 /**
@@ -162,4 +189,8 @@ val numberedName = names2.map(name => (name, names2.indexOf(name) + 1))
  * result:
  * res6: scala.collection.immutable.Map[(String, Int),Int] = Map((MONTREAL,21) -> 1, (CALGARY,19) -> 1, (TORONTO,20) -> 2, (TORONTO,22) -> 1)
  */
-//write you solution here
+val cityAgeMap = employeeList.foldLeft(Map.empty[(String, Int), Int])((map, employee) => {
+  val key = (employee.city.toUpperCase, employee.age.toInt)
+  map + (key -> (map.getOrElse(key, 0)+1))
+})
+println(cityAgeMap.mkString(", "))
